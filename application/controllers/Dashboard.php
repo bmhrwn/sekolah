@@ -11,6 +11,7 @@ class Dashboard extends CI_Controller
         $this->load->model('ModelKuota');
         $this->load->model('ModelJadwal');
         $this->load->model('ModelHasil');
+        $this->load->model('ModelSoal');
 
         if ($this->session->userdata('username') == null || $this->session->userdata('admin') != true) {
             redirect(base_url());
@@ -113,6 +114,22 @@ class Dashboard extends CI_Controller
         $this->load->view('dashboard/layout/sidebar');
         $this->load->view('dashboard/layout/navbar');
         $this->load->view('dashboard/testertulis/v_hasil');
+        $this->load->view('dashboard/layout/footer');
+    }
+
+    public function data_soal(){
+
+        $data = [
+            'title' => "Data Soal",
+            'data_soal' => $this->ModelSoal->getDataSoal(),
+            'data_kelas' => $this->ModelKuota->getDataKelas(),
+            'active_soal' => 'active'
+        ];
+
+        $this->load->view('dashboard/layout/header', $data);
+        $this->load->view('dashboard/layout/sidebar');
+        $this->load->view('dashboard/layout/navbar');
+        $this->load->view('dashboard/data/data_soal');
         $this->load->view('dashboard/layout/footer');
     }
 
