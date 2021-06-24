@@ -100,11 +100,10 @@
                                                     <td>
                                                         <center>
                                                             <span data-toggle="tooltip" data-toggle="tooltip" data-placement="top" title="Atur Jadwal">
-                                                                <button onClick="add_jadwal('<?= base_url() ?>jadwal/add_jadwal','<?= $row['id_user'] ?>')" data-toggle="modal" data-target="#modaljadwal" type="button" class="btn btn-primary btn-circle btn-icon">
+                                                                <button onClick="add_jadwal('<?= base_url() ?>jadwal/add_jadwal','<?= $row['id_user'] ?>')" data-toggle="modal" data-target="#modaljadwal" type="button" class="btn btn-outline-primary btn-circle btn-icon">
                                                                     <i class="fa fa-calendar"></i></button>
                                                             </span>
                                                     </td>
-
                                                 </tr>
                                             <?php } ?>
                                         </tbody>

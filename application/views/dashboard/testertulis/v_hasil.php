@@ -107,13 +107,13 @@
                                                             <?php
                                                                 $date = getDatesFromRange(date('Y-m-d'),$row['jadwal']);
                                                             ?>
-                                                            <?php if ($row['status_pemberitahuan'] == 2) { ?>
+                                                            <?php if ($row['status_pemberitahuan'] == 2 ) { ?>
                                                                 <?php if(count($date) >= 1){ ?>
                                                                     <span class="badge badge-warning">Belum Dinilai</span>
                                                                     <?php }else{ ?>
                                                                         <span class="badge badge-danger">Diskualifikasi/Gagal</span>
                                                                 <?php } ?>
-                                                            <?php } else if($row['status_pemberitahuan'] == 3) { ?>
+                                                            <?php } else if($row['status_pemberitahuan'] == 3 || $row['status_pemberitahuan'] == 4) { ?>
                                                                 <span class="badge badge-success">Sudah Dinilai</span>
                                                             <?php } ?>
                                                         </center>
@@ -121,14 +121,14 @@
                                                     <td>
                                                         <center>
                                                            
-                                                            <?php if ($row['status_pemberitahuan'] == 3) { ?>
+                                                            <?php if ($row['status_pemberitahuan'] == 3 || $row['status_pemberitahuan'] == 4) { ?>
                                                                 <span data-toggle="tooltip" data-toggle="tooltip" data-placement="top" title="Lihat Hasil">
-                                                                    <button onClick="add_jadwal('<?= base_url() ?>jadwal/add_jadwal','<?= $row['id_user'] ?>')" data-toggle="modal" data-target="#modaljadwal" type="button" class="btn btn-success btn-circle btn-icon">
+                                                                    <button onClick="add_jadwal('<?= base_url() ?>jadwal/add_jadwal','<?= $row['id_user'] ?>')" data-toggle="modal" data-target="#modaljadwal" type="button" class="btn btn-outline-success btn-circle btn-icon">
                                                                         <i class="fa fa-clipboard"></i></button>
                                                                 </span>
                                                             <?php }else if(count($date) >= 1){ ?>
                                                                 <span data-toggle="tooltip" data-toggle="tooltip" data-placement="top" title="Input Nilai">
-                                                                    <button onClick="add_jadwal1('<?= base_url() ?>jadwal/add_jadwal','<?= $row['id_user'] ?>')" data-toggle="modal" data-target="#modaljadwal" type="button" class="btn btn-primary btn-circle btn-icon">
+                                                                    <button onClick="add_jadwal1('<?= base_url() ?>jadwal/add_jadwal','<?= $row['id_user'] ?>')" data-toggle="modal" data-target="#modaljadwal" type="button" class="btn btn-outline-primary btn-circle btn-icon">
                                                                         <i class="fa fa-edit"></i></button>
                                                                 </span>
                                                             <?php } ?> 

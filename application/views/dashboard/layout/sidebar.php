@@ -93,7 +93,7 @@
                                 <?php if (isset($active_normalisasi) || isset($active_akhir)) { ?>
                                     <a class="has-arrow active" href="">
                                         <span class="educate-icon educate-home icon-wrap active"></span>
-                                        <span class="mini-click-non">Tes Tertulis</span>
+                                        <span class="mini-click-non">Penilaian</span>
                                     </a>
                                     <?php }else{ ?>
                                         <a class="has-arrow" href="">
@@ -108,11 +108,11 @@
                                             <li class=""><a href="<?= base_url() ?>dashboard/data_normalisasi"><span class="mini-sub-pro">Normalisasi</span></a></li>
                                         <?php } ?>
                                         
-                                        <?php if (isset($active_akhir)) { ?>
+                                        <!-- <?php if (isset($active_akhir)) { ?>
                                         <li class="active"><a href="<?= base_url() ?>dashboard/data_akhir"><span class="mini-sub-pro">Hasil Akhir</span></a></li>
                                         <?php }else{ ?>
                                             <li class=""><a href="<?= base_url() ?>dashboard/data_akhir"><span class="mini-sub-pro">Hasil Akhir</span></a></li>
-                                        <?php } ?>
+                                        <?php } ?> -->
                                     </ul>
                                 </li>
                                 <a><span class="mini-sub-pro">Lain - Lain</span></a>
