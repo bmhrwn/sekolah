@@ -42,5 +42,6 @@
         .color-white{
             color: #FFF;
         }
+        
     </style>
 </head>

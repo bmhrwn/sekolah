@@ -1,3 +1,10 @@
+<style>
+ .footer-copy-right p{
+      padding-left: 203px !important;
+      text-align: left !important;
+    }
+</style>
+
 <div class="breadcome-area">
     <div class="container-fluid">
         <div class="row">
@@ -40,13 +47,6 @@
                     </div>
                     <div class="sparkline13-graph">
                         <div class="datatable-dashv1-list custom-datatable-overright">
-                            <div id="toolbar">
-                                <select class="form-control dt-tb">
-                                    <option value="">Export Basic</option>
-                                    <option value="all">Export All</option>
-                                    <option value="selected">Export Selected</option>
-                                </select>
-                            </div>
                             <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" data-show-refresh="true" data-key-events="false" data-show-toggle="true" data-resizable="true" data-cookie="true" data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
                                 <thead>
                                     <tr>
@@ -76,7 +76,7 @@
                                             <td>
                                                 <center>
                                                     <span data-toggle="tooltip" data-toggle="tooltip" data-placement="top" title="Lihat Detail Siswa">
-                                                        <button onClick="getDetail('<?= $row['nis'] ?>','<?= $row['full_name'] ?>')" data-toggle="modal" data-target="#modaldetail" type="button" class="btn btn-outline-purple btn-circle btn-icon btn-sm">
+                                                        <button onClick="getDetail('<?= $row['nis'] ?>','<?= $row['full_name'] ?>','<?= $row['jenis_kelamin'] ?>','<?= $row['nama_orangtua'] ?>','<?= $row['tgl_lahir'] ?>','<?= $row['alamat'] ?>')" data-toggle="modal" data-target="#modaldetail" type="button" class="btn btn-outline-purple btn-circle btn-icon btn-sm">
                                                             <i class="fa fa-user"></i></button>
                                                     </span>
                                                     <span data-toggle="tooltip" data-toggle="tooltip" data-placement="top" title="Hapus Data">
@@ -132,35 +132,33 @@
                         <div class="col-lg-5">
                             <img style="width: 250px;heigth:auto;" src="<?= base_url() ?>assets/admin/user.png" class="btn-circle" alt="">
                         </div>
-                        <?php foreach ($data_student as $row) { ?>
                         <div class="col-lg-7">
                             <div class="row">
                                 <div class="col-lg-6"><span>NISN</span></div>
-                                <div class="col-lg-6"> : <?= $row['nis'] ?><span class="font-bold" id="nisn"></span></div>
+                                <div class="col-lg-6"> : <span class="font-bold" id="nisn"></span></div>
                             </div>
                             <div class="row mt-6">
                                 <div class="col-lg-6"><span>Nama Lengkap</span></div>
-                                <div class="col-lg-6"> : <?= $row['full_name'] ?> <span class="font-bold" id="nama"></span></div>
+                                <div class="col-lg-6"> : <span class="font-bold" id="nama"></span></div>
                             </div>
                             <div class="row mt-6">
                                 <div class="col-lg-6"><span>Nama Orangtua</span></div>
-                                <div class="col-lg-6"> : <?= $row['nama_orangtua'] ?> <span class="font-bold" id="orangtua"></span></div>
+                                <div class="col-lg-6"> : <span class="font-bold" id="orangtua"></span></div>
                             </div>
                             <div class="row mt-6">
                                 <div class="col-lg-6"><span>Jenis Kelamin</span></div>
-                                <div class="col-lg-6"> : <?= $row['jenis_kelamin'] ?> <span class="font-bold" id="jk"></span></div>
+                                <div class="col-lg-6"> : <span class="font-bold" id="jk"></span></div>
                             </div>
                             <div class="row mt-6">
                                 <div class="col-lg-6"><span>Tanggal Lahir</span></div>
-                                <div class="col-lg-6"> : <?= $row['tgl_lahir'] ?> <span class="font-bold" id="tgl_lahir"></span></div>
+                                <div class="col-lg-6"> : <span class="font-bold" id="tgl_lahir"></span></div>
                             </div>
                             <div class="row mt-6">
                                 <div class="col-lg-6"><span>Alamat</span></div>
-                                <div class="col-lg-6"> : <?= $row['alamat'] ?> <span class="font-bold" id="alamat"></span></div>
+                                <div class="col-lg-6"> : <span class="font-bold" id="alamat"></span></div>
                             </div>
 
                         </div>
-                        <?php } ?>
                     </div>
                 </div>
             </div>
@@ -171,3 +169,12 @@
     </div>
 </div>
 </div>
+<script>
+    function getDetail(nis,fullName,jk,ortu,tglLahir,alamat){
+        document.getElementById("nisn").innerHTML = nis
+        document.getElementById("nama").innerHTML = fullName
+        document.getElementById("orangtua").innerHTML = ortu
+        document.getElementById("tgl_lahir").innerHTML = tglLahir
+        document.getElementById("alamat").innerHTML = alamat
+    }
+</script>

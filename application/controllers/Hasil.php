@@ -48,4 +48,28 @@
             $this->session->set_flashdata('title', 'Berhasil!');
             redirect(base_url().'dashboard/data_hasil');
         }
+
+        public function confirmKelulusan(){
+            $idPendaftaran = $this->uri->segment(3);
+            $kelulusan = $this->uri->segment(4);
+            $updateStatusNormalisasi = [
+                'status' => 1
+            ];
+            $this->ModelHasil->updateNormalisasi($updateStatusNormalisasi,$idPendaftaran);
+            if($kelulusan == 1){
+                $notif = 'Selamat Anda telah dinyatakan lulus dari hasil perhitungan kami, Silahkan datang ke sekolah untuk melakukan daftar ulang.';
+            }else{
+                $notif = 'Mohon Maaf, Anda dinyatakan tidak lulus dari hasil perhitungan kami, Terimakasih';
+
+            }
+            $update = array(
+                'pemberitahuan' => $notif,
+                'status_pemberitahuan' => 4
+            );
+            $this->ModelPendaftaran->updateDataById($update,$idPendaftaran);
+            $this->session->set_flashdata('type', 'success');
+            $this->session->set_flashdata('pesan', 'Konfirmasi Kelulusan berhasil dilakukan');
+            $this->session->set_flashdata('title', 'Berhasil!');
+            redirect(base_url().'dashboard/data_normalisasi');
+        }
     }

@@ -44,6 +44,10 @@ class ModelPendaftaran extends CI_Model
    public function updateData($data,$id){
       return $this->db->update('tbl_pendaftaran',$data,array('nis'=>$id));
    }
+
+   public function updateDataById($update,$idPendaftaran){
+      return $this->db->update('tbl_pendaftaran',$update,array('id_pendaftaran'=>$idPendaftaran));
+   }
    public function insertCheck($inserCheck){
       return $this->db->insert('tbl_konfirmasi', $inserCheck);
    }

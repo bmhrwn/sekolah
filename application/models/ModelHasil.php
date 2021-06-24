@@ -32,4 +32,38 @@ class ModelHasil extends CI_Model{
                 tbl_pendaftaran.nis = tbl_siswa.nis";
                 return $this->db->query($sql)->result_array();
     }
+
+    public function getDataPenilaian(){
+        $sql = "SELECT * FROM tbl_penilaian 
+                    JOIN tbl_pendaftaran ON tbl_penilaian.id_pendaftaran = tbl_pendaftaran.id_pendaftaran
+                    JOIN tbl_siswa ON tbl_pendaftaran.nis = tbl_siswa.nis";
+        return $this->db->query($sql)->result_array();
+    }
+
+    public function ambilNilaiMaxBerdasarkanKriteria($kriteria){
+        $this->db->select_max($kriteria);
+
+        return $this->db->get('tbl_penilaian')->result_array();
+    }
+
+    public function deleteAllNormalisasi(){
+        $sql = "DELETE FROM tbl_normalisasi";
+        return $this->db->query($sql);
+    }
+
+    public function insertPenilaian($data){
+        return $this->db->insert_batch('tbl_normalisasi',$data);
+    }
+
+    public function getDataPenilaianAkhir($kelas){
+        $sql = "SELECT *,tbl_normalisasi.nilai_mtk as nilai_mtk,tbl_normalisasi.nilai_bindo as nilai_bindo,tbl_normalisasi.nilai_bingg as nilai_bingg FROM tbl_normalisasi 
+                    JOIN tbl_pendaftaran ON tbl_normalisasi.id_pendaftaran = tbl_pendaftaran.id_pendaftaran
+                    JOIN tbl_siswa ON tbl_pendaftaran.nis = tbl_siswa.nis WHERE
+                    tbl_pendaftaran.id_kelas = ? ORDER BY total_nilai DESC";
+        return $this->db->query($sql,$kelas)->result_array();
+    }
+
+    public function updateNormalisasi($data,$id){
+        return $this->db->update('tbl_normalisasi',$data,['id_pendaftaran' => $id]);
+    }
 }

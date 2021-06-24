@@ -1,3 +1,11 @@
+<style>
+    .fixed-table-toolbar{
+        margin-right: -107px !important;
+        float: right !important;
+    }
+
+</style>
+
 <div class="breadcome-area">
     <div class="container-fluid">
         <div class="row">
@@ -26,7 +34,6 @@
         </div>
     </div>
 </div>
-</div>
 <!-- Static Table Start -->
 <div class="data-table-area mg-b-15">
     <div class="container-fluid">
@@ -42,19 +49,20 @@
                     </div>
                     <div class="sparkline13-graph">
                         <div class="datatable-dashv1-list custom-datatable-overright">
-                            <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true"  data-toolbar="#toolbar">
+                            
+                            <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" data-show-refresh="true" data-key-events="false" data-show-toggle="true" data-resizable="true" data-cookie="true" data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
                                 <thead>
                                     <tr>
                                         <th data-field="id">
                                             <center>No</center>
                                         </th>
-                                        <th data-field="name" >
+                                        <th data-field="name">
                                             <center>Kriteria</center>
                                         </th>
-                                        <th data-field="name" >
+                                        <th data-field="email">
                                             <center>Bobot</center>
                                         </th>
-                                        <th data-field="name" >
+                                        <th data-field="tipe">
                                             <center>Tipe Kriteria</center>
                                         </th>
                                         <th data-field="action">
@@ -63,23 +71,23 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <?php $i = 1;
+                                    <?php $i = 1;
                                     foreach ($data_kriteria as $row) { ?>
                                         <tr>
                                             <td>
                                                 <center><?= $i++; ?></center>
                                             </td>
-                                            <td><?= $row['kriteria'] ?></td>
+                                            <td><?= $row['nama_kriteria'] ?></td>
                                             <td><?= $row['bobot'] ?></td>
-                                            <td></td>
+                                            <td><?= $row['tipe_kriteria'] ?></td>
                                             <td>
                                                 <center>
                                                     <span data-toggle="tooltip" data-toggle="tooltip" data-placement="top" title="Edit Data">
-                                                        <button onClick="" data-toggle="modal" data-target="#modaltambah" type="button" class="btn btn-outline-info btn-circle btn-icon btn-sm">
+                                                        <button onClick="" data-toggle="modal" data-target="#modaltambah" type="button" class="btn btn-outline-primary btn-circle btn-icon btn-sm">
                                                             <i class="fa fa-edit"></i></button>
                                                     </span>
                                                     <span data-toggle="tooltip" data-toggle="tooltip" data-placement="top" title="Hapus Data">
-                                                        <button onClick="" data-toggle="modal" data-target="#modal_delete" type="button" style="border-color:red;" class="btn btn-outline-primary btn-circle btn-icon btn-sm">
+                                                        <button onClick="" data-toggle="modal" data-target="#modal_delete" style="border-color:red;" class="btn btn-outline-danger btn-circle btn-icon btn-sm">
                                                             <i class="fa fa-trash"></i></button>
                                                     </span>
                                                 </center>
@@ -129,7 +137,6 @@
             </div>
         </div>
     </div>
-</div>
 </div>
 
 

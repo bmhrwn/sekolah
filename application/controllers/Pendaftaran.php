@@ -57,7 +57,8 @@ class Pendaftaran extends CI_Controller
             'nilai_mtk' => $nilai_mtk,
             'nilai_bindo'   => $nilai_bindo,
             'nilai_bingg'   => $nilai_bingg,
-            'id_kelas' => $nama_kelas
+            'id_kelas' => $nama_kelas,
+            'pemberitahuan' => "Selamat, data Anda sudah masuk kedalam sistem kami, Silahkan tunggu konfirmasi dari kami."
         );
         $this->ModelPendaftaran->insertDataPendaftaran($data_pendaftaran);
         $this->session->set_flashdata('type', 'success');
