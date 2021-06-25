@@ -438,6 +438,7 @@
                 function getDetail(nis, fullName, jk, ortu, tglLahir, alamat) {
                     document.getElementById("nisn").innerHTML = nis
                     document.getElementById("nama").innerHTML = fullName
+                    document.getElementById("jk").innerHTML = jk
                     document.getElementById("orangtua").innerHTML = ortu
                     document.getElementById("tgl_lahir").innerHTML = tglLahir
                     document.getElementById("alamat").innerHTML = alamat

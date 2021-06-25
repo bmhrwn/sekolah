@@ -113,7 +113,7 @@
                                                                 </span>
                                                             <?php } ?>
                                                             <span data-toggle="tooltip" data-toggle="tooltip" data-placement="top" title="Lihat Detail Siswa">
-                                                                <button onClick="getDetail('<?= $row['nis'] ?>','<?= $row['full_name'] ?>','<?= $row['nama_orangtua'] ?>','<?= $row['jenis_kelamin'] ?>','<?= $row['nama_kelas'] ?>','<?= $row['tgl_lahir'] ?>','<?= $row['alamat'] ?>')" data-toggle="modal" data-target="#modaldetail" type="button" class="btn btn-outline-purple btn-circle btn-icon btn-sm">
+                                                                <button onClick="getDetail('<?= $row['nis'] ?>','<?= $row['full_name'] ?>','<?= $row['nama_orangtua'] ?>','<?= $row['jenis_kelamin'] ?>','<?= $row['nama_kelas'] ?>','<?= $row['tgl_lahir'] ?>','<?= $row['alamat'] ?>','<?= $row['foto_siswa']?>','<?= base_url()?>')" data-toggle="modal" data-target="#modaldetail" type="button" class="btn btn-outline-purple btn-circle btn-icon btn-sm">
                                                                     <i class="fa fa-user"></i></button>
                                                             </span>
                                                         </center>
@@ -255,13 +255,13 @@
                                                                 </span>
                                                             <?php } ?>
                                                             <?php if ($row['is_verify'] > 0) { ?>
-                                                                <span data-toggle="tooltip" data-toggle="tooltip" data-placement="top" title="Hapus Data">
-                                                                    <button onClick="" data-toggle="modal" data-target="#modal_delete" type="button" class="btn btn-outline-info btn-circle btn-icon btn-sm">
-                                                                        <i class="fa fa-book"></i></button>
+                                                                <span data-toggle="tooltip" data-toggle="tooltip" data-placement="top" title="Detail Pendaftaran">
+                                                                    <button onClick="detail_pendaftaran('<?= base_url() ?>','<?= $row['nis'] ?>','<?= $row['full_name'] ?>','<?= $row['tgl_lahir'] ?>','<?= $row['jenis_kelamin'] ?>','<?= $row['kota'] ?>','<?= $row['no_telp'] ?>','<?= $row['alamat'] ?>','<?= $row['nilai_mtk'] ?>','<?= $row['nilai_bindo'] ?>','<?= $row['nilai_bingg'] ?>','<?= $row['bukti_nis'] ?>','<?= $row['ijazah'] ?>','<?= $row['id_pendaftaran'] ?>','<?= $row['kartu_keluarga']?>','<?= $row['akte']?>','<?= $row['id_pendaftaran'] ?>')" data-toggle="modal" data-target="#modaldetailpendaftaran" type="button" class="btn btn-outline-info btn-circle btn-icon btn-sm">
+                                                                        <i class="fa fa-info"></i></button>
                                                                 </span>
                                                             <?php } ?>
                                                             <span data-toggle="tooltip" data-toggle="tooltip" data-placement="top" title="Lihat Detail Siswa">
-                                                                <button onClick="getDetail('<?= $row['nis'] ?>','<?= $row['full_name'] ?>','<?= $row['nama_orangtua'] ?>','<?= $row['jenis_kelamin'] ?>','<?= $row['nama_kelas'] ?>','<?= $row['tgl_lahir'] ?>','<?= $row['alamat'] ?>')" data-toggle="modal" data-target="#modaldetail" type="button" class="btn btn-outline-purple btn-circle btn-icon btn-sm">
+                                                                <button onClick="getDetail('<?= $row['nis'] ?>','<?= $row['full_name'] ?>','<?= $row['nama_orangtua'] ?>','<?= $row['jenis_kelamin'] ?>','<?= $row['nama_kelas'] ?>','<?= $row['tgl_lahir'] ?>','<?= $row['alamat'] ?>','<?= $row['foto_siswa']?>','<?= base_url()?>')" data-toggle="modal" data-target="#modaldetail" type="button" class="btn btn-outline-purple btn-circle btn-icon btn-sm">
                                                                     <i class="fa fa-user"></i></button>
                                                             </span>
                                                         </center>
@@ -394,7 +394,7 @@
                                             <div class="col-sm-9">
                                                 <div class="row">
                                                     <div class="col-sm-11">
-                                                        <input type="date" value="" readonly id="tgl_lahir" required name="tgl_lahir" class="form-control">
+                                                        <input type="date" value="" readonly id="tgllahir" required name="tgl_lahir" class="form-control">
                                                     </div>
                                                     <div class="col-sm-1">
                                                         <div style="color: grey;padding:10px;" class="checkbox-group">
@@ -562,8 +562,8 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" id="button" class="btn btn-primary">Verifikasi Data</button>
                             <button type="button" data-dismiss="modal" class="btn btn-default">Keluar</button>
+                            <button type="submit" id="button" class="btn btn-primary">Verifikasi Data</button>
                         </div>
                         </form>
                     </div>
@@ -800,8 +800,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" id="button" class="btn btn-primary">Verifikasi Data</button>
-                            <button type="button" data-dismiss="modal" class="btn btn-default">Keluar</button>
+                            <button type="button" data-dismiss="modal" class="btn btn-primary">Keluar</button>
                         </div>
                         </form>
                     </div>
@@ -829,7 +828,7 @@
     function verifikasi_data(base_url, nis, nama, tgl_lhir, jenis_kelamin, kota, no_tlp, alamat, mtk, indo, inggris, foto_nis, ijazah, id_user,kk,akte) {
         document.getElementById('nis').value = nis;
         document.getElementById('full_name').value = nama;
-        document.getElementById('tgl_lahir').value = tgl_lhir;
+        document.getElementById('tgllahir').value = tgl_lhir;
         document.getElementById('jenis_kelamin').value = jenis_kelamin;
         document.getElementById('kota').value = kota;
         document.getElementById('no_telp').value = no_tlp;
