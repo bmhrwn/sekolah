@@ -110,7 +110,7 @@
                                                             <?php if ($row['status_pemberitahuan'] == 2 ) { ?>
                                                                 <?php if(count($date) >= 1){ ?>
                                                                     <span class="badge badge-warning">Belum Dinilai</span>
-                                                                    <?php }else{ ?>
+                                                                <?php }else{ ?>
                                                                         <span class="badge badge-danger">Diskualifikasi/Gagal</span>
                                                                 <?php } ?>
                                                             <?php } else if($row['status_pemberitahuan'] == 3 || $row['status_pemberitahuan'] == 4) { ?>

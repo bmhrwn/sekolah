@@ -21,18 +21,17 @@
                         <?php
                         $date = getDatesFromRange(date('Y-m-d'), $data_pendaftaran['jadwal']);
                         ?>
-                        <?php if ((count($date) - 1) >= 0 && $data_pendaftaran['status_pemberitahuan'] == 2) { ?>
-                            <?php if ($data_pendaftaran['status_pemberitahuan'] > 0) { ?>
-
+                        <?php if ($data_pendaftaran['status_pemberitahuan'] == 2) { ?>
+                            <?php if ((count($date)) >= 1) { ?>
+                                <div class="alert alert-success" role="alert">
+                                    <!-- A simple success alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like. -->
+                                    <?= $data_pendaftaran['pemberitahuan'] ?>
+                                </div>
+                            <?php } else { ?>
                                 <div class="alert alert-danger" role="alert">
                                     <b>Mohon Maaf</b>, Anda telah di diskualifikasi karna tidak mengikuti tes pada jadwal yang telah ditentukan.
                                 </div>
                             <?php } ?>
-                        <?php } else { ?>
-                            <div class="alert alert-success" role="alert">
-                                <!-- A simple success alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like. -->
-                                <?= $data_pendaftaran['pemberitahuan'] ?>
-                            </div>
                         <?php } ?>
                     <?php } else { ?>
                         <div class="alert alert-success" role="alert">
@@ -40,6 +39,7 @@
                             <?= $data_pendaftaran['pemberitahuan'] ?>
                         </div>
                     <?php } ?>
+
 
                 </div>
             </div>
@@ -63,7 +63,7 @@
                     <div>
                         <?php if ($data_pendaftaran['status_pemberitahuan'] == 0) { ?>
                             <p>Mohon maaf anda belum bisa melihat jadwal tes tertulis. <br> Silahkan tunggu hingga data anda diverifikasi oleh admin kami.</p>
-                        <?php }else if ($data_pendaftaran['status_pemberitahuan'] == 1) { ?>
+                        <?php } else if ($data_pendaftaran['status_pemberitahuan'] == 1) { ?>
                             <p><b>Mohon Maaf.</b> Anda tidak melihat hasil. <br> karena belum melakukan tes tertulis</p>
                         <?php } else if ($data_pendaftaran['status_pemberitahuan'] == 2) { ?>
                             <p> <b> Mohon maaf </b> anda belum dapat melihat hasil tes tertulis. <br>Silahkan lakukan tes terlebih dahulu.</p>
@@ -78,7 +78,7 @@
                     <div>
                         <?php if ($data_pendaftaran['status_pemberitahuan'] == 0) { ?>
                             <p>Mohon maaf anda belum bisa melihat jadwal tes tertulis. <br> Silahkan tunggu hingga data anda diverifikasi oleh admin kami.</p>
-                        <?php }else if ($data_pendaftaran['status_pemberitahuan'] == 1) {  ?>
+                        <?php } else if ($data_pendaftaran['status_pemberitahuan'] == 1) {  ?>
                             <p><b>Mohon Maaf.</b> Anda tidak melihat hasil. <br> karena belum melakukan tes tertulis</p>
                         <?php } elseif ($data_pendaftaran['status_pemberitahuan'] == 2) { ?>
                             <p> <b> Mohon maaf </b> anda belum dapat melihat hasil akhir. <br>Silahkan lakukan tes terlebih dahulu.</p>
