@@ -89,7 +89,9 @@
                                                     </thead>
                                                     <tbody>
                                                         <?php $i = 1;
+                                                              $j = 1;
                                                         $kuoataKelas1 = $kelas1;
+                                                        
                                                         foreach ($data_normalisasi_1 as $row) { ?>
                                                             <tr>
                                                                 <td>
@@ -122,7 +124,8 @@
                                                                     </center>
                                                                 </td>
                                                                 <td>
-                                                                    <?php if ($i <= $kuoataKelas1) { ?>
+                                                                    
+                                                                    <?php if ($j++ <= $kuoataKelas1) { ?>
                                                                         <?php $status = 1; ?>
                                                                         <span class="badge badge-primary">Lulus</span>
                                                                     <?php } else { ?>
@@ -191,6 +194,7 @@
                                                     </thead>
                                                     <tbody>
                                                         <?php $i = 1;
+                                                              $j = 1;
                                                         $kuoataKelas2 = $kelas2;
                                                         foreach ($data_normalisasi_2 as $row) { ?>
                                                             <tr>
@@ -224,7 +228,7 @@
                                                                     </center>
                                                                 </td>
                                                                 <td>
-                                                                    <?php if ($i <= $kuoataKelas2) { ?>
+                                                                    <?php if ($j++ <= $kuoataKelas2) { ?>
                                                                         <?php $status = 1; ?>
                                                                         <span class="badge badge-primary">Lulus</span>
                                                                     <?php } else { ?>
@@ -293,6 +297,7 @@
                                                     </thead>
                                                     <tbody>
                                                         <?php $i = 1;
+                                                              $j = 1;
                                                         $kuoataKelas3 = $kelas3;
                                                         foreach ($data_normalisasi_3 as $row) { ?>
                                                             <tr>
@@ -326,7 +331,7 @@
                                                                     </center>
                                                                 </td>
                                                                 <td>
-                                                                    <?php if ($i <= $kuoataKelas3) { ?>
+                                                                    <?php if ($j++ <= $kuoataKelas3) { ?>
                                                                         <?php $status = 1; ?>
                                                                         <span class="badge badge-primary">Lulus</span>
                                                                     <?php } else { ?>
