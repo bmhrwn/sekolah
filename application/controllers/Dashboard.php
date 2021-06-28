@@ -148,14 +148,21 @@ class Dashboard extends CI_Controller
     {
         $data = array(
             'title' => 'Data Hasil',
-            'data_hasil' => $this->ModelJadwal->getDataHasilBy2Status(2),
+            'data_hasil' => $this->ModelJadwal->getDataPendaftaran(2),
             'active_hasil' => 'active'
         );
+        // var_dump($data['data_hasil']);die;
         $this->load->view('dashboard/layout/header', $data);
         $this->load->view('dashboard/layout/sidebar');
         $this->load->view('dashboard/layout/navbar');
         $this->load->view('dashboard/testertulis/v_hasil');
         $this->load->view('dashboard/layout/footer');
+    }
+
+    public function getHasil(){
+        $id = $this->uri->segment(3);
+        $data = $this->ModelJadwal->getHasilByIDPendaftaran($id);
+        echo json_encode($data);
     }
 
     public function data_soal(){
