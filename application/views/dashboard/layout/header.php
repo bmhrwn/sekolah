@@ -73,4 +73,27 @@
 		============================================ -->
     <link rel="stylesheet" href="<?= base_url()?>assets/admin/css/data-table/bootstrap-table.css">
     <link rel="stylesheet" href="<?= base_url()?>assets/admin/css/data-table/bootstrap-editable.css">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <style>
+    .btn-outline-danger{
+        border-color : red!important;
+        background-color: transparent!important;
+        color : red!important;
+    }
+    .btn-outline-primary{
+        border-color : #337ab7!important;
+        background-color: transparent!important;
+        color : #337ab7!important;
+    }
+    .fixed-footer{
+      width: 100% !important;
+    }
+    .footer-copy-right p{
+      text-align: left !important;
+    }
+    .badge-primary{
+      background-color: #337ab7;
+      color: #fff;
+    }
+    </style>
 </head>

@@ -44,25 +44,23 @@
                     <?php } else { ?>
                         <li class=""><a href="<?= base_url() ?>home/visi">Visi / Misi</a></li>
                     <?php } ?>
-                    <?php if (isset($active_kuota)) { ?>
+                    <?php if (isset($active_kuota)) { ?> 
+                    
                         <li class="active"><a href="<?= base_url() ?>home/kuota_mutasi">Kuota Mutasi</a></li>
                     <?php } else { ?>
                         <li class=""><a href="<?= base_url() ?>home/kuota_mutasi">Kuota Mutasi</a></li>
                     <?php } ?>
                     <?php if ($this->session->userdata('username') != null && $this->session->userdata('admin') == false) { ?>
-                        <?php if (isset($active_biodata)) { ?>
-                            <li class="active"><a href="">Biodata</a></li>
-                        <?php } else { ?>
-                            <li class=""><a href="">Biodata</a></li>
-                        <?php } ?>
+                        
                     <?php } ?>
                     <?php if ($this->session->userdata('username') != null && $this->session->userdata('admin') == false) { ?>
                         <?php if (isset($active_hasil)) { ?>
-                            <li class="active"><a href="">Hasil</a></li>
+                            <li class="active"><a href="<?= base_url() ?>home/hasil">Hasil</a></li>
                         <?php } else { ?>
-                            <li class=""><a href="">Hasil</a></li>
+                            <li class=""><a href="<?= base_url() ?>home/hasil">Hasil</a></li>
                         <?php } ?>
-                    <?php } else { ?>
+                    <?php } ?>
+                    <?php if($this->session->userdata('admin') == true){ ?>
                         <li><a href="<?= base_url() ?>dashboard/">Dashboard</a></li>
                     <?php } ?>
                     <?php if ($this->session->userdata('username') != null && $this->session->userdata('admin') == false) { ?>

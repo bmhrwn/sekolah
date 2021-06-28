@@ -1,3 +1,10 @@
+<style>
+    .fixed-table-toolbar{
+        margin-right: -107px !important;
+        float: right !important;
+    }
+
+</style>
 <div class="breadcome-area">
     <div class="container-fluid">
         <div class="row">
@@ -42,13 +49,6 @@
                     </div>
                     <div class="sparkline13-graph">
                         <div class="datatable-dashv1-list custom-datatable-overright">
-                            <div id="toolbar">
-                                <select class="form-control dt-tb">
-                                    <option value="">Export Basic</option>
-                                    <option value="all">Export All</option>
-                                    <option value="selected">Export Selected</option>
-                                </select>
-                            </div>
                             <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" data-show-refresh="true" data-key-events="false" data-show-toggle="true" data-resizable="true" data-cookie="true" data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
                                 <thead>
                                     <tr>
@@ -78,11 +78,11 @@
                                             <td>
                                                 <center>
                                                     <span data-toggle="tooltip" data-toggle="tooltip" data-placement="top" title="Edit Data">
-                                                        <button onClick="edit_kuota('<?= base_url() ?>kuota/edit_kuota','<?= $row['id_kelas'] ?>','<?= $row['jumlah_kuota'] ?>','<?= $row['id_kuota'] ?>')" data-toggle="modal" data-target="#modaltambah" type="button" class="btn btn-primary btn-circle btn-icon">
+                                                        <button onClick="edit_kuota('<?= base_url() ?>kuota/edit_kuota','<?= $row['id_kelas'] ?>','<?= $row['jumlah_kuota'] ?>','<?= $row['id_kuota'] ?>')" data-toggle="modal" data-target="#modaltambah" type="button" class="btn btn-info btn-circle btn-icon btn-sm">
                                                             <i class="fa fa-edit"></i></button>
                                                     </span>
                                                     <span data-toggle="tooltip" data-toggle="tooltip" data-placement="top" title="Hapus Data">
-                                                        <button onClick="delete_kuota('<?= base_url() ?>kuota/delete_kuota/<?= $row['id_kuota'] ?>')" data-toggle="modal" data-target="#modal_delete" type="button" class="btn btn-danger btn-circle btn-icon">
+                                                        <button onClick="delete_kuota('<?= base_url() ?>kuota/delete_kuota/<?= $row['id_kuota'] ?>')" data-toggle="modal" data-target="#modal_delete" style="border-color:red;" class="btn btn-outline-primary btn-circle btn-icon btn-sm">
                                                             <i class="fa fa-trash"></i></button>
                                                     </span>
                                                 </center>

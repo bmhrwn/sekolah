@@ -1,4 +1,12 @@
-<div class="breadcome-area">
+<style>
+    .fixed-table-toolbar{
+        margin-right: -107px !important;
+        float: right !important;
+    }
+
+</style>
+
+    <div class="breadcome-area">
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -42,13 +50,6 @@
                     </div>
                     <div class="sparkline13-graph">
                         <div class="datatable-dashv1-list custom-datatable-overright">
-                            <div id="toolbar">
-                                <select class="form-control dt-tb">
-                                    <option value="">Export Basic</option>
-                                    <option value="all">Export All</option>
-                                    <option value="selected">Export Selected</option>
-                                </select>
-                            </div>
                             <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" data-show-refresh="true" data-key-events="false" data-show-toggle="true" data-resizable="true" data-cookie="true" data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
                                 <thead>
                                     <tr>
@@ -74,11 +75,11 @@
                                             <td>
                                                 <center>
                                                     <span data-toggle="tooltip" data-toggle="tooltip" data-placement="top" title="Edit Data">
-                                                        <button onClick="edit_class('<?= base_url() ?>kelas/edit_class','<?= $row['id_kelas'] ?>','<?= $row['nama_kelas']?>')" data-toggle="modal" data-target="#modaltambah" type="button" class="btn btn-primary btn-circle btn-icon">
+                                                        <button onClick="edit_class('<?= base_url() ?>kelas/edit_class','<?= $row['id_kelas'] ?>','<?= $row['nama_kelas']?>')" data-toggle="modal" data-target="#modaltambah" type="button" class="btn btn-outline-info btn-circle btn-icon btn-sm">
                                                             <i class="fa fa-edit"></i></button>
                                                     </span>
                                                     <span data-toggle="tooltip" data-toggle="tooltip" data-placement="top" title="Hapus Data">
-                                                        <button onClick="delete_class('<?= base_url() ?>kelas/delete_class/<?= $row['id_kelas'] ?>')" data-toggle="modal" data-target="#modal_delete" type="button" class="btn btn-danger btn-circle btn-icon">
+                                                        <button onClick="delete_kelas('<?= base_url() ?>kelas/delete_kelas/<?= $row['id_kelas'] ?>')" data-toggle="modal" data-target="#modal_delete" type="button" style="border-color:red;" class="btn btn-outline-primary btn-circle btn-icon btn-sm">
                                                             <i class="fa fa-trash"></i></button>
                                                     </span>
                                                 </center>
