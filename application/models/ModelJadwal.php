@@ -34,12 +34,13 @@ class ModelJadwal extends CI_Model{
     }
 
     public function  getDataHasilBy2Status($status){
-        $sql = "SELECT * FROM tbl_siswa,tbl_pendaftaran,tbl_user,tbl_kelas,tbl_jadwal
+        $sql = "SELECT * FROM tbl_siswa,tbl_pendaftaran,tbl_user,tbl_kelas,tbl_jadwal,tbl_penilaian
         WHERE
         tbl_siswa.id_user = tbl_user.id_user AND
         tbl_pendaftaran.nis = tbl_siswa.nis AND
         tbl_kelas.id_kelas = tbl_kelas.id_kelas AND
         tbl_user.id_user = tbl_jadwal.id_user AND
+        tbl_penilaian.id_pendaftaran = tbl_pendaftaran.id_pendaftaran AND
         is_verify = 1 AND
         status_pemberitahuan >= ? GROUP BY tbl_pendaftaran.nis ORDER BY tbl_pendaftaran.id_pendaftaran DESC
         ";

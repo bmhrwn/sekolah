@@ -37,8 +37,10 @@ class Konfirmasi extends CI_Controller
             $data = array(
                 'is_verify' => 2,
                 'pemberitahuan' => 'Maaf Anda Tidak Lolos Dari Verifikasi Data.'
+               
             );
             $this->ModelPendaftaran->isVerficationSucces($id_pendaftaran, $data);
+            
         }
         $nisn = $this->checkData($check_nisn);
         $nama = $this->checkData($check_nama);

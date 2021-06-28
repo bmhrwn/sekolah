@@ -123,12 +123,12 @@
                                                            
                                                             <?php if ($row['status_pemberitahuan'] == 3 || $row['status_pemberitahuan'] == 4) { ?>
                                                                 <span data-toggle="tooltip" data-toggle="tooltip" data-placement="top" title="Lihat Hasil">
-                                                                    <button onClick="add_jadwal('<?= base_url() ?>jadwal/add_jadwal','<?= $row['id_user'] ?>')" data-toggle="modal" data-target="#modaljadwal" type="button" class="btn btn-outline-success btn-circle btn-icon">
+                                                                    <button onClick="get_hasil('<?= $row['mtk'] ?>','<?= $row['bindo'] ?>','<?= $row['bingg'] ?>','<?= $row['tes'] ?>','<?= $row['wawancara']?>')" data-toggle="modal" data-target="#modalgethasil" type="button" class="btn btn-outline-success btn-circle btn-icon">
                                                                         <i class="fa fa-clipboard"></i></button>
                                                                 </span>
                                                             <?php }else if(count($date) >= 1){ ?>
                                                                 <span data-toggle="tooltip" data-toggle="tooltip" data-placement="top" title="Input Nilai">
-                                                                    <button onClick="add_jadwal1('<?= base_url() ?>jadwal/add_jadwal','<?= $row['id_user'] ?>')" data-toggle="modal" data-target="#modaljadwal" type="button" class="btn btn-outline-primary btn-circle btn-icon">
+                                                                    <button onClick="add_jadwal1('<?= base_url() ?>jadwal/add_jadwal','<?= $row['id_user'] ?>')" data-toggle="modal" data-target="#modalinput" type="button" class="btn btn-outline-primary btn-circle btn-icon">
                                                                         <i class="fa fa-edit"></i></button>
                                                                 </span>
                                                             <?php } ?> 
@@ -145,11 +145,11 @@
                     </div>
                 </div>
             </div>
-            <div class="modal fade" id="modaljadwal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="modalinput" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title" id="modal_title">Verifikasi Data Siswa</h4>
+                            <h4 class="modal-title" id="modal_title"></h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <!-- <span aria-hidden="true">&times;</span> -->
                             </button>
@@ -166,7 +166,7 @@
                                                     <div class="col-sm-9">
                                                         <div class="row">
                                                             <div class="col-sm-11">
-                                                                <input type="text" value="" required name="tertulis" class="form-control">
+                                                                <input type="text" value=""  required name="tertulis" id="tertulis" class="form-control">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -178,7 +178,7 @@
                                                     <div class="col-sm-9">
                                                         <div class="row">
                                                             <div class="col-sm-11">
-                                                                <input type="text" value="" required name="wawancara" class="form-control">
+                                                                <input type="text" value="" required name="wawancara" id="wawancara" class="form-control">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -211,7 +211,112 @@
                 </div>
             </div>
 
+            <div class="modal fade" id="modalgethasil" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="modal_title1">Detail Nilai</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <!-- <span aria-hidden="true">&times;</span> -->
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div id="myTabContent" style="margin-top: 30px;" class="tab-content custom-product-edit">
+                                <div class="product-tab-list tab-pane fade active in" id="description">
+                                    <form action="" method="post">
+                                        <div class="row" style="margin-bottom:25px;">
+                                            <div class="col-md-12">
+                                            <div class="form-group row">
+                                                    <label for="" class="col-sm-3 col-form-label">Nilai Matematika</label>
+
+                                                    <div class="col-sm-9">
+                                                        <div class="row">
+                                                            <div class="col-sm-11">
+                                                                <input type="text" value="" readonly  required name="mtk1" id="mtk1" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="" class="col-sm-3 col-form-label">Nilai Bahasa Indonesia</label>
+
+                                                    <div class="col-sm-9">
+                                                        <div class="row">
+                                                            <div class="col-sm-11">
+                                                                <input type="text" value="" readonly  required name="bindo1" id="bindo1" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="" class="col-sm-3 col-form-label">Nilai Bahasa Inggris</label>
+
+                                                    <div class="col-sm-9">
+                                                        <div class="row">
+                                                            <div class="col-sm-11">
+                                                                <input type="text" value="" readonly  required name="binggris1" id="binggris1" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="" class="col-sm-3 col-form-label">Nilai Test Tertulis</label>
+
+                                                    <div class="col-sm-9">
+                                                        <div class="row">
+                                                            <div class="col-sm-11">
+                                                                <input type="text" value="" readonly  required name="tertulis1" id="tertulis1" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="" class="col-sm-3 col-form-label">Nilai Test Wawancara</label>
+
+                                                    <div class="col-sm-9">
+                                                        <div class="row">
+                                                            <div class="col-sm-11">
+                                                                <input type="text" value="" readonly required name="wawancara1" id="wawancara1" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-sm-3"></div>
+                                                    <div class="col-sm-9">
+                                                    Keterangan : <br>
+                                                        nilai sangat bagus : 90 - 100 <br>
+                                                        nilai bagus : 70 - 90 <br> 
+                                                        nilai cukup : 50 - 70 <br>
+                                                        nilai kurang : 30 - 50 <br>
+                                                        nilai sangat kurang : 10 - 30 <br> 
+
+                                                    </div>
+                                                </div>
+                                                <input type="hidden" name="id_user1" id="id_user1">
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" data-dismiss="modal" class="btn btn-primary">Keluar</button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <script>
+            function get_hasil(mtk,bindo,bingg,tes,wawancara){
+                document.getElementById('mtk1').value = mtk;
+                document.getElementById('bindo1').value = bindo;
+                document.getElementById('binggris1').value = bingg;
+                document.getElementById('tertulis1').value = tes;
+                document.getElementById('wawancara1').value = wawancara;
+
+            }
                 function add_jadwal1(base_url,id_user) {
                     document.getElementById("modal_title").innerHTML = "Form Penilaian";
                     document.getElementById("id_user").value = id_user;
