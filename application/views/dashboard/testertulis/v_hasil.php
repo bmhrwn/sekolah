@@ -123,7 +123,7 @@
                                                            
                                                             <?php if ($row['status_pemberitahuan'] == 3 || $row['status_pemberitahuan'] == 4) { ?>
                                                                 <span data-toggle="tooltip" data-toggle="tooltip" data-placement="top" title="Lihat Hasil">
-                                                                    <button onClick="get_hasil('<?= $row['mtk'] ?>','<?= $row['bindo'] ?>','<?= $row['bingg'] ?>','<?= $row['tes'] ?>','<?= $row['wawancara']?>')" data-toggle="modal" data-target="#modalgethasil" type="button" class="btn btn-outline-success btn-circle btn-icon">
+                                                                    <button onClick="get_hasil('<?= base_url() ?>','<?= $row['id_pendaftaran'] ?>')" data-toggle="modal" data-target="#modalgethasil" type="button" class="btn btn-outline-success btn-circle btn-icon">
                                                                         <i class="fa fa-clipboard"></i></button>
                                                                 </span>
                                                             <?php }else if(count($date) >= 1){ ?>
@@ -309,12 +309,22 @@
             </div>
 
             <script>
-            function get_hasil(mtk,bindo,bingg,tes,wawancara){
-                document.getElementById('mtk1').value = mtk;
-                document.getElementById('bindo1').value = bindo;
-                document.getElementById('binggris1').value = bingg;
-                document.getElementById('tertulis1').value = tes;
-                document.getElementById('wawancara1').value = wawancara;
+            function get_hasil(base_url,id_pendaftaran){
+                $.ajax({
+                    type : "GET",
+                    dataType:'HTML',
+                    url : base_url + 'dashboard/getHasil/'+id_pendaftaran,
+                    success : function(response){
+                        let data = JSON.parse(response);
+                        document.getElementById('mtk1').value = data.mtk;
+                        document.getElementById('bindo1').value = data.bindo;
+                        document.getElementById('binggris1').value = data.bingg;
+                        document.getElementById('tertulis1').value = data.tes;
+                        document.getElementById('wawancara1').value = data.wawancara;
+                    }   
+                })
+
+                
 
             }
                 function add_jadwal1(base_url,id_user) {
