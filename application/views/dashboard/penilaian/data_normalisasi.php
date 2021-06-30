@@ -89,9 +89,9 @@
                                                     </thead>
                                                     <tbody>
                                                         <?php $i = 1;
-                                                              $j = 1;
+                                                        $j = 1;
                                                         $kuoataKelas1 = $kelas1;
-                                                        
+
                                                         foreach ($data_normalisasi_1 as $row) { ?>
                                                             <tr>
                                                                 <td>
@@ -124,7 +124,7 @@
                                                                     </center>
                                                                 </td>
                                                                 <td>
-                                                                    
+
                                                                     <?php if ($j++ <= $kuoataKelas1) { ?>
                                                                         <?php $status = 1; ?>
                                                                         <span class="badge badge-primary">Lulus</span>
@@ -136,7 +136,7 @@
                                                                 <td>
                                                                     <center>
                                                                         <span data-toggle="tooltip" data-toggle="tooltip" data-placement="top" title="Lihat Detail Siswa">
-                                                                            <button onClick="getDetail('<?= $row['nis'] ?>','<?= $row['full_name'] ?>','<?= $row['jenis_kelamin'] ?>','<?= $row['nama_orangtua'] ?>','<?= $row['tgl_lahir'] ?>','<?= $row['alamat'] ?>')" data-toggle="modal" data-target="#modaldetail" type="button" class="btn btn-outline-purple btn-circle btn-icon btn-sm">
+                                                                            <button onClick="getDetail('<?= $row['nis'] ?>','<?= $row['full_name'] ?>','<?= $row['jenis_kelamin'] ?>','<?= $row['nama_orangtua'] ?>','<?= $row['tgl_lahir'] ?>','<?= $row['alamat'] ?>','<?= $row['foto_siswa'] ?>','<?= base_url() ?>')" data-toggle="modal" data-target="#modaldetail" type="button" class="btn btn-outline-purple btn-circle btn-icon btn-sm">
                                                                                 <i class="fa fa-user"></i></button>
                                                                         </span>
                                                                         <?php if ($row['status'] == 0) { ?>
@@ -194,7 +194,7 @@
                                                     </thead>
                                                     <tbody>
                                                         <?php $i = 1;
-                                                              $j = 1;
+                                                        $j = 1;
                                                         $kuoataKelas2 = $kelas2;
                                                         foreach ($data_normalisasi_2 as $row) { ?>
                                                             <tr>
@@ -239,7 +239,7 @@
                                                                 <td>
                                                                     <center>
                                                                         <span data-toggle="tooltip" data-toggle="tooltip" data-placement="top" title="Lihat Detail Siswa">
-                                                                            <button onClick="getDetail('<?= $row['nis'] ?>','<?= $row['full_name'] ?>','<?= $row['jenis_kelamin'] ?>','<?= $row['nama_orangtua'] ?>','<?= $row['tgl_lahir'] ?>','<?= $row['alamat'] ?>')" data-toggle="modal" data-target="#modaldetail" type="button" class="btn btn-outline-purple btn-circle btn-icon btn-sm">
+                                                                            <button onClick="getDetail('<?= $row['nis'] ?>','<?= $row['full_name'] ?>','<?= $row['jenis_kelamin'] ?>','<?= $row['nama_orangtua'] ?>','<?= $row['tgl_lahir'] ?>','<?= $row['alamat'] ?>','<?= $row['foto_siswa'] ?>','<?= base_url() ?>')" data-toggle="modal" data-target="#modaldetail" type="button" class="btn btn-outline-purple btn-circle btn-icon btn-sm">
                                                                                 <i class="fa fa-user"></i></button>
                                                                         </span>
                                                                         <?php if ($row['status'] == 0) { ?>
@@ -297,7 +297,7 @@
                                                     </thead>
                                                     <tbody>
                                                         <?php $i = 1;
-                                                              $j = 1;
+                                                        $j = 1;
                                                         $kuoataKelas3 = $kelas3;
                                                         foreach ($data_normalisasi_3 as $row) { ?>
                                                             <tr>
@@ -342,7 +342,7 @@
                                                                 <td>
                                                                     <center>
                                                                         <span data-toggle="tooltip" data-toggle="tooltip" data-placement="top" title="Lihat Detail Siswa">
-                                                                            <button onClick="getDetail('<?= $row['nis'] ?>','<?= $row['full_name'] ?>','<?= $row['jenis_kelamin'] ?>','<?= $row['nama_orangtua'] ?>','<?= $row['tgl_lahir'] ?>','<?= $row['alamat'] ?>')" data-toggle="modal" data-target="#modaldetail" type="button" class="btn btn-outline-purple btn-circle btn-icon btn-sm">
+                                                                            <button onClick="getDetail('<?= $row['nis'] ?>','<?= $row['full_name'] ?>','<?= $row['jenis_kelamin'] ?>','<?= $row['nama_orangtua'] ?>','<?= $row['tgl_lahir'] ?>','<?= $row['alamat'] ?>','<?= $row['foto_siswa'] ?>','<?= base_url() ?>')" data-toggle="modal" data-target="#modaldetail" type="button" class="btn btn-outline-purple btn-circle btn-icon btn-sm">
                                                                                 <i class="fa fa-user"></i></button>
                                                                         </span>
                                                                         <?php if ($row['status'] == 0) { ?>
@@ -401,7 +401,7 @@
                             <div class="container-fluid mt-4" style="margin-top:20px;margin-bottom:20px;">
                                 <div class="row">
                                     <div class="col-lg-5">
-                                        <img style="width: 250px;heigth:auto;" src="<?= base_url() ?>assets/admin/user.png" class="btn-circle" alt="">
+                                        <img style="width: 250px;heigth:auto;" src="<?= base_url() ?>assets/admin/user.png" id="foto_siswa" class="btn-circle" alt="">
                                     </div>
                                     <div class="col-lg-7">
                                         <div class="row">
@@ -440,13 +440,14 @@
                 </div>
             </div>
             <script>
-                function getDetail(nis, fullName, jk, ortu, tglLahir, alamat) {
+                function getDetail(nis, fullName, jk, ortu, tglLahir, alamat, foto_siswa, base_url) {
                     document.getElementById("nisn").innerHTML = nis
                     document.getElementById("nama").innerHTML = fullName
                     document.getElementById("jk").innerHTML = jk
                     document.getElementById("orangtua").innerHTML = ortu
                     document.getElementById("tgl_lahir").innerHTML = tglLahir
                     document.getElementById("alamat").innerHTML = alamat
+                    document.getElementById('foto_siswa').src = base_url + "assets/home/bukti/" + foto_siswa;
                 }
 
                 function confirmPendaftaran(base_url, id_pendaftaran, status) {
