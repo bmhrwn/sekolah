@@ -13,6 +13,7 @@ class Dashboard extends CI_Controller
         $this->load->model('ModelHasil');
         $this->load->model('ModelSoal');
         $this->load->model('ModelKriteria');
+        $this->load->model('ModelLaporan');
 
         if ($this->session->userdata('username') == null || $this->session->userdata('admin') != true) {
             redirect(base_url());
@@ -308,6 +309,23 @@ class Dashboard extends CI_Controller
         $this->load->view('dashboard/layout/sidebar');
         $this->load->view('dashboard/layout/navbar');
         $this->load->view('dashboard/penilaian/data_akhir');
+        $this->load->view('dashboard/layout/footer');
+    }
+    public function data_laporan()
+    {
+        $data = array(
+            'title' => 'Data Laporan',
+            'active_laporan' => 'active',
+            'data_kelas1' => $this->ModelLaporan->getDataLolosKelas1(), 
+            'data_kelas2' => $this->ModelLaporan->getDataLolosKelas2(),
+            'data_kelas3' => $this->ModelLaporan->getDataLolosKelas3(),
+           
+        );
+     
+        $this->load->view('dashboard/layout/header', $data);
+        $this->load->view('dashboard/layout/sidebar');
+        $this->load->view('dashboard/layout/navbar');
+        $this->load->view('dashboard/laporan/data_laporan');
         $this->load->view('dashboard/layout/footer');
     }
 }

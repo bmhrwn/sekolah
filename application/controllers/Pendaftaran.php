@@ -35,6 +35,12 @@ class Pendaftaran extends CI_Controller
         $bukti_nis = $this->_updatePhoto('bukti_nis');
         $fotoSiswa = $this->_updatePhoto('profil');
 
+        $get_datapendaftaran = $this->ModelPendaftaran->getDataByNis($nis);
+        $nis_sama = $get_datapendaftaran['nis'];
+
+        if($nis != $nis_sama){
+        
+
         $data_siswa = array(
             'id_user'   => $id_user,
             'nis'   => $nis,
@@ -65,7 +71,13 @@ class Pendaftaran extends CI_Controller
         $this->session->set_flashdata('pesan', 'Pendaftaran Berhasil');
         $this->session->set_flashdata('title', 'Berhasil!');
         redirect(base_url('home/pendaftaran'));
+    }else{
+        $this->session->set_flashdata('type', 'warning');
+        $this->session->set_flashdata('pesan', 'Mohon Maaf Pendaftaran Di Tolak Dikarenakan Nis Sudah Terdaftar');
+        $this->session->set_flashdata('title', 'Gagal!');
+        redirect(base_url('home/pendaftaran'));
     }
+}
 
     public function _updatePhoto($nameFoto)
     {

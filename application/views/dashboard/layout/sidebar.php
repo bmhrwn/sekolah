@@ -58,13 +58,13 @@
                                 <?php } ?>
                                 <?php if (isset($active_jadwal) || isset($active_hasil)) { ?>
                                     <a class="has-arrow active" href="">
-                                        <span class="educate-icon educate-home icon-wrap active"></span>
+                                        <span class="fa fa-pencil active" style="margin-right: 10px;"></span>
                                         <span class="mini-click-non">Tes Tertulis</span>
                                     </a>
                                     <?php }else{ ?>
                                         <a class="has-arrow" href="">
-                                        <span class="educate-icon educate-home icon-wrap"></span>
-                                        <span class="mini-click-non">Tes Tertulis</span>
+                                        <span class="fa fa-pencil" style="margin-right: 10px;"></span>
+                                        <span class="mini-click-non">Tes Mutasi</span>
                                     </a>
                                     <?php } ?>
                                     <ul class="submenu-angle" aria-expanded="true">
@@ -92,12 +92,12 @@
                                 <?php } ?>
                                 <?php if (isset($active_normalisasi) || isset($active_akhir)) { ?>
                                     <a class="has-arrow active" href="">
-                                        <span class="educate-icon educate-home icon-wrap active"></span>
+                                        <span class="fa fa-tasks active" style="margin-right: 10px;"></span>
                                         <span class="mini-click-non">Penilaian</span>
                                     </a>
                                     <?php }else{ ?>
                                         <a class="has-arrow" href="">
-                                        <span class="educate-icon educate-home icon-wrap"></span>
+                                        <span class="fa fa-tasks" style="margin-right: 10px;"></span>
                                         <span class="mini-click-non">Penilaian</span>
                                     </a>
                                     <?php } ?>
@@ -115,6 +115,19 @@
                                         <?php } ?> -->
                                     </ul>
                                 </li>
+                                <li>
+                                <?php if (isset($active_laporan)) { ?>
+                                    <a class="active" href="<?= base_url() ?>dashboard/data_laporan">
+                                        <span class="fa fa-book active" style="margin-right: 10px;"></span>
+                                        <span class="mini-click-non">Laporan</span>
+                                    </a>
+                                <?php } else { ?>
+                                    <a class="" href="<?= base_url() ?>dashboard/data_laporan">
+                                        <span class="fa fa-book" style="margin-right: 10px;"></span>
+                                        <span class="mini-click-non">Laporan</span>
+                                    </a>
+                                <?php } ?>
+                            </li>
                                 <a><span class="mini-sub-pro">Lain - Lain</span></a>
 
                                 <li>
