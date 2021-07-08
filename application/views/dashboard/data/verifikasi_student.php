@@ -264,6 +264,10 @@
                                                                 <button onClick="getDetail('<?= $row['nis'] ?>','<?= $row['full_name'] ?>','<?= $row['nama_orangtua'] ?>','<?= $row['jenis_kelamin'] ?>','<?= $row['nama_kelas'] ?>','<?= $row['tgl_lahir'] ?>','<?= $row['alamat'] ?>','<?= $row['foto_siswa']?>','<?= base_url()?>')" data-toggle="modal" data-target="#modaldetail" type="button" class="btn btn-outline-purple btn-circle btn-icon btn-sm">
                                                                     <i class="fa fa-user"></i></button>
                                                             </span>
+                                                            <span data-toggle="tooltip" data-toggle="tooltip" data-placement="top" title="Hapus Data">
+                                                                <button onClick="delete_data('<?= base_url()?>konfirmasi/delete_data/<?= $row['id_pendaftaran']?>')" data-toggle="modal" data-target="#modal_delete" type="button" class="btn btn-outline-danger btn-circle btn-icon btn-sm">
+                                                                    <i class="fa fa-trash"></i></button>
+                                                            </span>
                                                         </center>
                                                     </td>
                                                 </tr>
@@ -811,7 +815,26 @@
 </div>
 
 
+<div class="modal fade" id="modal_delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modal_title">Form Hapus Data</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
 
+                Anda yakin ingin menghapus data?
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <a id="buttondelete" class="btn btn-primary">Hapus Data</a>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script>
     function getDetail(nisn, nama, orangtua, jk, kelas, tgl_lahir, alamat,foto,base_url) {
@@ -910,5 +933,7 @@
             }
         })
     }
-    
+    function delete_data(base_url){
+        document.getElementById('buttondelete').href = base_url;
+    }
 </script>

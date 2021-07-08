@@ -178,5 +178,5 @@
         document.getElementById("tgl_lahir").innerHTML = tglLahir
         document.getElementById("alamat").innerHTML = alamat
         document.getElementById('foto_siswa').src = base_url + "assets/home/bukti/" + foto_siswa;
-    }
+x    }
 </script>
