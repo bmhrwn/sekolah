@@ -55,4 +55,7 @@ class ModelPendaftaran extends CI_Model
    public function checkData($idPendaftaran){
       return $this->db->get_where('tbl_konfirmasi',['id_pendaftaran'=>$idPendaftaran])->row_array();
    }
+   public function deleteData($id_pendaftaran){
+      return $this->db->delete('tbl_pendaftaran', array('id_pendaftaran' => $id_pendaftaran));
+   }
 }

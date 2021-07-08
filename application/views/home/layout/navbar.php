@@ -28,11 +28,7 @@
                         <li class=""><a href="<?= base_url() ?>home/index">Home</a></li>
                     <?php } ?>
                     <?php if ($this->session->userdata('username') != null && $this->session->userdata('admin') == false) { ?>
-                        <?php if (isset($active_pendaftaran)) { ?>
-                            <li class="active"><a href="<?= base_url() ?>home/pendaftaran">Pendaftaran</a></li>
-                        <?php } else { ?>
-                            <li class=""><a href="<?= base_url() ?>home/pendaftaran">Pendaftaran</a></li>
-                        <?php } ?>
+                     
                     <?php } ?>
                     <?php if (isset($active_about)) { ?>
                         <li class="active"><a href="<?= base_url() ?>home/about_school">Tentang Sekolah</a></li>

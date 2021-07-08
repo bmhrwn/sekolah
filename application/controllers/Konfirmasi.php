@@ -83,4 +83,13 @@ class Konfirmasi extends CI_Controller
             return 0;
         }
     }
+    public function delete_data(){
+        $id_pendaftaran = $this->uri->segment(3);
+
+        $this->ModelPendaftaran->deleteData($id_pendaftaran);
+        $this->session->set_flashdata('type', 'success');
+        $this->session->set_flashdata('pesan', 'Hapus Data Berhasil');
+        $this->session->set_flashdata('title', 'Berhasil!');
+        redirect(base_url('dashboard/verifikasi_student'));
+    }
 }
