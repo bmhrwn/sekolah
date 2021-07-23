@@ -28,4 +28,8 @@ public function getDataLolosKelas3(){
     tbl_kelas.id_kelas = 4 and tbl_normalisasi.status = 1";
     return $this->db->query($sql)->result_array();
 }
+public function getDataChart($status){
+    $sql = "SELECT * FROM tbl_normalisasi WHERE status = ?";
+    return $this->db->query($sql,$status)->result_array($status);
+}
 }

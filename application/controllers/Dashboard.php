@@ -313,13 +313,24 @@ class Dashboard extends CI_Controller
     }
     public function data_laporan()
     {
+        $label = [
+            'Lulus',
+            'Tidak Lulus'
+        ];
+        $getDataLulus = $this->ModelLaporan->getDataChart(1);
+        $getDataTidakLulus = $this->ModelLaporan->getDataChart(2);
+        $sample = [
+            count($getDataLulus),
+            count($getDataTidakLulus)
+        ];
         $data = array(
             'title' => 'Data Laporan',
             'active_laporan' => 'active',
             'data_kelas1' => $this->ModelLaporan->getDataLolosKelas1(), 
             'data_kelas2' => $this->ModelLaporan->getDataLolosKelas2(),
             'data_kelas3' => $this->ModelLaporan->getDataLolosKelas3(),
-           
+            'data_label' => $label,
+            'sample' => $sample
         );
      
         $this->load->view('dashboard/layout/header', $data);

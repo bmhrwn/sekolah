@@ -14,6 +14,7 @@
 <!-- jquery
 		============================================ -->
 <script src="<?= base_url() ?>assets/admin/js/vendor/jquery-1.12.4.min.js"></script>
+ 
 <!-- bootstrap JS
 		============================================ -->
 <script src="<?= base_url() ?>assets/admin/js/bootstrap.min.js"></script>
@@ -96,6 +97,8 @@
 		============================================ -->
 <script src="<?= base_url() ?>assets/admin/js/chart/jquery.peity.min.js"></script>
 <script src="<?= base_url() ?>assets/admin/js/peity/peity-active.js"></script>
+<script src="<?= base_url() ?>assets/admin/chart.js/Chart.min.js"></script>
+<script src="<?= base_url() ?>assets/admin/demo/chart-pie-demo.js"></script>
 <!-- tab JS
 		============================================ -->
 <script src="<?= base_url() ?>assets/admin/js/tab.js"></script>
@@ -127,6 +130,31 @@
   })
 </script>
 <!-- <script src="<?= base_url() ?>assets/admin/js/tawk-chat.js"></script> -->
+<script>
+    const data = {
+            labels: <?= json_encode($data_label) ?>,
+            datasets: [{
+                label: 'My First Dataset',
+                data: <?= json_encode($sample) ?>,
+                backgroundColor: [
+                'rgb(255, 99, 132)',
+                'rgb(54, 162, 235)',
+                ],
+                hoverOffset: 4
+            }]
+    
+    };
+    const config = {
+        type: 'doughnut',
+        data: data,
+    };
+	var ctx = document.getElementById('myPieChart')
+	
+  var myPieChart = new Chart(
+      ctx,
+      config
+  );
+</script>
 </body>
 
 </html>

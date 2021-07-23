@@ -64,4 +64,10 @@ class ModelPendaftaran extends CI_Model
    public function getDataJadwalPendaftaran(){
       return $this->db->get('tbl_jadwal_pendaftaran')->row_array();
    }
+   public function getDataKelasById($nama_kelas){
+      return $this->db->get_where('tbl_kuota', array('id_kelas' => $nama_kelas))->row_array();
+   }
+   public function getDataPendaftaranByIdKelas($nama_kelas){
+      return $this->db->get_where('tbl_pendaftaran', array('id_kelas' => $nama_kelas))->result_array();
+   }
 }

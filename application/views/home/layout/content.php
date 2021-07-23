@@ -20,13 +20,16 @@
         </div>
     </div>
 </header>
+<div class="alert alert-danger text-center" style="margin-right: 50px;margin-left:50px;">
+    <h4 class="">Pendaftaran Mutasi dilakukan pada Tanggal <?= $jadwal_pendaftaran['jadwal_mulai'] ?> Sampai Tanggal <?= $jadwal_pendaftaran['jadwal_selesai'] ?></h4>
+    <h5>Silakan lakukan pendaftaran secepatnya !!</h5>
+</div>
 
 
-<section class="section-padding" id="about_page">
+<section class="section-padding" id="about_page" style="padding-top: 10px !important;">
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-md-10 col-md-offset-1">
-
                 <div class="page-title text-center">
                     <img src="<?= base_url() ?>assets/home/images/about-logo.png" alt="About Logo">
                     <div class="space-20"></div>

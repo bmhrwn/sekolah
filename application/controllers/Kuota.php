@@ -11,12 +11,14 @@ class Kuota extends CI_Controller
     {
         $nama_kelas = $this->input->post('nama_kelas');
         $jumlah_kuota = $this->input->post('jumlah_kuota');
+        $batas_pendaftar = $this->input->post('batas_pendaftar');
 
         if ($nama_kelas != null && $jumlah_kuota != null) {
 
             $data = array(
                 'id_kelas' => $nama_kelas,
-                'jumlah_kuota' => $jumlah_kuota
+                'jumlah_kuota' => $jumlah_kuota,
+                'batas_pendaftar' => $batas_pendaftar
             );
             $this->ModelKuota->addData($data);
             $this->session->set_flashdata('type', 'success');
@@ -35,11 +37,13 @@ class Kuota extends CI_Controller
         $id_kuota = $this->input->post('id_kuota');
         $nama_kelas = $this->input->post('nama_kelas');
         $jumlah_kuota = $this->input->post('jumlah_kuota');
+        $batas_pendaftar = $this->input->post('batas_pendaftar');
 
         if ($nama_kelas != null && $jumlah_kuota != null) {
             $data = array(
                 'id_kelas'  => $nama_kelas,
                 'jumlah_kuota'  => $jumlah_kuota,
+                'batas_pendaftar' => $batas_pendaftar
             );
             $this->ModelKuota->updateData($data, $id_kuota);
             $this->session->set_flashdata('type', 'success');
