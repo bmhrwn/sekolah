@@ -61,6 +61,9 @@
                                         <th data-field="email">
                                             <center>Jumlah Kuota</center>
                                         </th>
+                                        <th data-field="batas">
+                                            <center>Batas Pendaftar</center>
+                                        </th>
                                         <th data-field="action">
                                             <center>Action</center>
                                         </th>
@@ -75,10 +78,11 @@
                                             </td>
                                             <td><?= $row['nama_kelas'] ?></td>
                                             <td><?= $row['jumlah_kuota'] ?></td>
+                                            <td><?= $row['batas_pendaftar'] ?></td>
                                             <td>
                                                 <center>
                                                     <span data-toggle="tooltip" data-toggle="tooltip" data-placement="top" title="Edit Data">
-                                                        <button onClick="edit_kuota('<?= base_url() ?>kuota/edit_kuota','<?= $row['id_kelas'] ?>','<?= $row['jumlah_kuota'] ?>','<?= $row['id_kuota'] ?>')" data-toggle="modal" data-target="#modaltambah" type="button" class="btn btn-info btn-circle btn-icon btn-sm">
+                                                        <button onClick="edit_kuota('<?= base_url() ?>kuota/edit_kuota','<?= $row['id_kelas'] ?>','<?= $row['jumlah_kuota'] ?>','<?= $row['id_kuota'] ?>','<?= $row['batas_pendaftar'] ?>')" data-toggle="modal" data-target="#modaltambah" type="button" class="btn btn-info btn-circle btn-icon btn-sm">
                                                             <i class="fa fa-edit"></i></button>
                                                     </span>
                                                     <span data-toggle="tooltip" data-toggle="tooltip" data-placement="top" title="Hapus Data">
@@ -124,7 +128,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modal_title"></h5>
+                <h5 class="modal-title" id="modal_title_add"></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 </button>
             </div>
@@ -143,6 +147,10 @@
                     <div class="form-group">
                         <label for="">Jumlah Kuota</label>
                         <input type="text" placeholder="Masukkan Jumlah Kuota" id="jumlah_kuota" name="jumlah_kuota" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Batas Pendaftar</label>
+                        <input type="text" placeholder="Masukkan Batas Pendaftar" id="batas_pendaftar" name="batas_pendaftar" class="form-control">
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-secondary" data-dismiss="modal">Close</button>

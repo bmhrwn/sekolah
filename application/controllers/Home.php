@@ -12,7 +12,8 @@ Class Home extends CI_Controller{
     public function index(){
         $data = array(
             "active_home" => "active",
-            "title" => "SMPN 148 Jakarta"
+            "title" => "SMPN 148 Jakarta",
+            "jadwal_pendaftaran" => $this->ModelJadwal->getDataPendaftaran()
         );
         $this->load->view('home/layout/header',$data);
         $this->load->view('home/layout/navbar');
