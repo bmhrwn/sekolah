@@ -191,43 +191,15 @@
                                     </table>
                                 </div>
                                 <div class="product-tab-list tab-pane fade" id="grafik">
-                                <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-refresh="true" data-key-events="false" data-resizable="true" data-cookie="true" data-cookie-id-table="saveId" data-show-export="true" data-toolbar="#toolbar">
-                                        <thead>
-                                            <tr>
-                                                <th data-field="id">
-                                                    <center>No</center>
-                                                </th>
-                                                <th data-field="nisn">
-                                                    <center>NISN</center>
-                                                </th>
-                                                <th data-field="name">
-                                                    <center>Nama Lengkap</center>
-                                                </th>
-                                                <th data-field="kelas">
-                                                    <center>Kelas Tujuan</center>
-                                                </th>
-                                                <th data-field="ortu">
-                                                    <center>Jenis Kelamin</center>
-                                                </th>
-                                                <th data-field="email">
-                                                    <center>Status</center>
-                                                </th>
-                                                
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                          
-                                                <tr>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-                                           
-                                        </tbody>
-                                    </table>
+                                    <!-- <div>
+                                        <canvas id="myChart" width="1039"height="300"></canvas>
+                                    </div> -->
+                                   <div class="card-body" >
+                                       <div class="chart-pie pt-4 pb-2">
+                                           <canvas id="myPieChart"height="80"></canvas>
+                                       </div>
+                                   </div>
+ 
                                 </div>
                             </div>
                         </div>
