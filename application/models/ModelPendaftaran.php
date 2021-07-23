@@ -61,4 +61,10 @@ class ModelPendaftaran extends CI_Model
    public function getDataByNis($nis){
       return $this->db->get_where('tbl_pendaftaran' , array('nis' => $nis))->row_array();
    }
+   public function getDataKelasById($nama_kelas){
+      return $this->db->get_where('tbl_kuota', array('id_kelas' => $nama_kelas))->row_array();
+   }
+   public function getDataPendaftaranByIdKelas($nama_kelas){
+      return $this->db->get_where('tbl_pendaftaran', array('id_kelas' => $nama_kelas))->result_array();
+   }
 }

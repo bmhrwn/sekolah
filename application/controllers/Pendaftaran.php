@@ -38,9 +38,14 @@ class Pendaftaran extends CI_Controller
         $get_datapendaftaran = $this->ModelPendaftaran->getDataByNis($nis);
         $nis_sama = $get_datapendaftaran['nis'];
 
+        $get_DataKelas = $this->ModelPendaftaran->getDataKelasById($nama_kelas);
+        $batas_pendaftaran = $get_DataKelas['batas_pendaftar'];
+        $get_DataByKelas = $this->ModelPendaftaran->getDataPendaftaranByIdKelas($nama_kelas);
+        $jumlah_pendaftar = count($get_DataByKelas);
+        if($batas_pendaftaran <= $jumlah_pendaftar){
         if($nis != $nis_sama){
         
-
+        
         $data_siswa = array(
             'id_user'   => $id_user,
             'nis'   => $nis,
@@ -77,6 +82,12 @@ class Pendaftaran extends CI_Controller
         $this->session->set_flashdata('title', 'Gagal!');
         redirect(base_url('home/pendaftaran'));
     }
+}else{
+    $this->session->set_flashdata('type', 'warning');
+    $this->session->set_flashdata('pesan', 'Mohon Maaf Batas Kuota Pendafataran Tidak Mencukupi!');
+    $this->session->set_flashdata('title', 'Gagal!');
+    redirect(base_url('home/pendaftaran'));
+}
 }
 
     public function _updatePhoto($nameFoto)
