@@ -63,4 +63,10 @@ class ModelJadwal extends CI_Model{
         $sql = "SELECT * FROM tbl_penilaian WHERE id_pendaftaran = ?";
         return $this->db->query($sql,$idPendaftaran)->row_array();
     }
+    public function addDataJadwalPendaftaran($data){
+        return $this->db->insert('tbl_jadwal_pendaftaran', $data);
+    }
+    public function updateDataJadwalPendaftaran($data_update, $id_jadwal_pendaftaran){
+        return $this->db->update('tbl_jadwal_pendaftaran', $data_update, array('id_jadwal_pendaftaran' => $id_jadwal_pendaftaran));
+    }
 }
