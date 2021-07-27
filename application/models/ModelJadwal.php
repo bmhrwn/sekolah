@@ -69,4 +69,8 @@ class ModelJadwal extends CI_Model{
     public function updateDataJadwalPendaftaran($data_update, $id_jadwal_pendaftaran){
         return $this->db->update('tbl_jadwal_pendaftaran', $data_update, array('id_jadwal_pendaftaran' => $id_jadwal_pendaftaran));
     }
+
+    public function getBatasJadwal(){
+        return $this->db->get('tbl_jadwal_pendaftaran')->row_array();
+    }
 }

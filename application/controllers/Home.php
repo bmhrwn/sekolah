@@ -13,7 +13,7 @@ Class Home extends CI_Controller{
         $data = array(
             "active_home" => "active",
             "title" => "SMPN 148 Jakarta",
-            "jadwal_pendaftaran" => $this->ModelJadwal->getDataPendaftaran()
+            "jadwal_pendaftaran" => $this->ModelJadwal->getBatasJadwal()
         );
         $this->load->view('home/layout/header',$data);
         $this->load->view('home/layout/navbar');
@@ -32,6 +32,7 @@ Class Home extends CI_Controller{
             "active_pendaftaran" => "active",
             "title" => "Pendaftaran",
             "data_kelas" => $this->ModelKuota->getDataKelas(),
+            "jadwal_pendaftaran" => $this->ModelJadwal->getBatasJadwal()
         );
         $this->load->view('home/layout/header',$data);
         $this->load->view('home/layout/navbar');

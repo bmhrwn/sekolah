@@ -23,9 +23,9 @@
                         <div class="form-group row mt-4">
                             <label for="" class="col-sm-3 col-form-label">NISN</label>
                             <div class="col-sm-9">
-                                <input type="number"autocomplete="off"autocorrect="false" value="" id="" required name="nis" onkeyup="checkNis(this)" class="form-control">
+                                <input type="number" autocomplete="off" autocorrect="false" value="" id="" required name="nis" onkeyup="checkNis(this)" class="form-control">
                                 <p style="color: red;
-                                "hidden="true"id="notif">Silahkan masukan nis yang benar ! (10 digit)</p>
+                                " hidden="true" id="notif">Silahkan masukan nis yang benar ! (10 digit)</p>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -177,13 +177,31 @@
             <div class="d-grid gap-2 d-md-block">
                 <center>
                     <button class="btn btn-outline-danger" onClick="back(3)" type="button">Kembali</button>
-                    <button class="btn btn-primary" id="btn_daftar" type="submit">Daftar</button>
+                    <?php
+                    $dateNow = date('Y-m-d');
+                    $jadwalMulai = $jadwal_pendaftaran['jadwal_mulai'];
+                    $jadwalSelesai = $jadwal_pendaftaran['jadwal_selesai'];
+                    $rangeMulai = GetDatesFromRange($dateNow, $jadwalMulai);
+                    $rangeSelesai = GetDatesFromRange($dateNow, $jadwalSelesai);
+                    ?>
+                    <?php if (count($rangeMulai) <= 1) { ?>
+                        <?php if (count($rangeSelesai) <= 1) { ?>
+                            <button class="btn btn-primary" id="btn_daftar" onclick="notifSudahSelesai()" type="button">Daftar</button>
+                            <?php } else { ?>
+                            <button class="btn btn-primary" id="btn_daftar" type="submit">Daftar</button>
+                        <?php } ?>
+                    <?php } else { ?>
+
+                        <button class="btn btn-primary" id="btn_daftar" onclick="notifBelumMulai()" type="button">Daftar</button>
+                    <?php } ?>
                 </center>
             </div>
         </div>
         </form>
     </div>
 </div>
+<!-- <p hidden="true" id="jadwal_mulai"><?= $jadwal_pendaftaran['jadwal_mulai'] ?></p>
+<p hidden="true" id="jadwal_selesai"><?= $jadwal_pendaftaran['jadwal_selesai'] ?></p> -->
 
 <script>
     function nextPage(page) {
@@ -201,45 +219,61 @@
     function checkNis(field) {
         let nis = field.value;
         console.log(nis.length);
-        if(nis.length > 10 || nis.length < 10){
+        if (nis.length > 10 || nis.length < 10) {
             document.getElementById("notif").hidden = false;
-            $("#btn_daftar").attr('disabled','disabled');
-        }else{
+            $("#btn_daftar").attr('disabled', 'disabled');
+        } else {
             document.getElementById("notif").hidden = true;
             $("#btn_daftar").removeAttr('disabled');
         }
     }
-    
-    function checkDate(field){
+
+    function notifBelumMulai() {
+        swal({
+            title: "Mohon Maaf",
+            text: "Anda belum bisa mendaftar dikarenakan pendaftaran siswa mutasi belum dimulai !",
+            icon: "info",
+        })
+    }
+
+    function notifSudahSelesai(){
+        swal({
+            title: "Mohon Maaf",
+            text: "Anda tidak bisa melakukan pendaftaran siswa mutasi karna pendaftaran sudah selesai !",
+            icon: "info",
+        })
+    }
+
+    function checkDate(field) {
         let date = field.value;
         let today = new Date();
-        let dd = String(today.getDate()).padStart(2,'0')
-        let mm = String(today.getMonth() + 1).padStart(2,'0');
+        let dd = String(today.getDate()).padStart(2, '0')
+        let mm = String(today.getMonth() + 1).padStart(2, '0');
         let yy = String(today.getFullYear());
-        let fullDate = yy+'-'+mm+'-'+dd;
-        let arrayDate = getRange(date,fullDate);
-        let minimalUmur = 4015;  // 11 tahun
-        if(arrayDate.length <= 4015){
+        let fullDate = yy + '-' + mm + '-' + dd;
+        let arrayDate = getRange(date, fullDate);
+        let minimalUmur = 4015; // 11 tahun
+        if (arrayDate.length <= 4015) {
             document.getElementById("notif_tanggal").hidden = false
-            $("#btn_daftar").attr('disabled','disabled');
-        }else{
+            $("#btn_daftar").attr('disabled', 'disabled');
+        } else {
             $("#btn_daftar").removeAttr('disabled');
-              document.getElementById("notif_tanggal").hidden = true
+            document.getElementById("notif_tanggal").hidden = true
 
-      }
+        }
 
-  }
+    }
 
-  function getRange(startDate,stopDate,steps = 1){
-      var dateArray = [];
-      let currentDate = new Date(startDate);
-      while(currentDate <= new Date(stopDate)){
-          dateArray.push(new Date(currentDate));
-          currentDate.setUTCDate(currentDate.getUTCDate() + steps);
+    function getRange(startDate, stopDate, steps = 1) {
+        var dateArray = [];
+        let currentDate = new Date(startDate);
+        while (currentDate <= new Date(stopDate)) {
+            dateArray.push(new Date(currentDate));
+            currentDate.setUTCDate(currentDate.getUTCDate() + steps);
 
-      }
-      return dateArray
-  }
+        }
+        return dateArray
+    }
 
     function back(page) {
         if (page == 3) {
@@ -253,3 +287,23 @@
         }
     }
 </script>
+
+<?php
+function getDatesFromRange($start, $end, $format = 'Y-m-d')
+{
+    $array = array();
+    $interval = new DateInterval('P1D');
+
+    $realEnd = new DateTime($end);
+    $realEnd->add($interval);
+
+    $period = new DatePeriod(new DateTime($start), $interval, $realEnd);
+
+    foreach ($period as $date) {
+        $array[] = $date->format($format);
+    }
+
+    return $array;
+}
+
+?>
