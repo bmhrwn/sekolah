@@ -43,5 +43,8 @@
             color: #FFF;
         }
         
+        .swal-text{
+            text-align: center;
+        }
     </style>
 </head>

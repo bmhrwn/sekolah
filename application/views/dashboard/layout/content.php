@@ -4,7 +4,7 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="breadcome-list">
                     <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" >
                             <div class="breadcome-heading">
                                 <form role="search" class="sr-input-func">
                                     <input type="text" placeholder="Search..." class="search-int form-control">
@@ -19,29 +19,19 @@
                                 <li><span class="bread-blod">Dashboard V.1</span>
                                 </li>
                             </ul>
-                            <div class="data-table-area mg-b-15">
-                                <div class="container-fluid">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <div class="sparkline13-list">
-                                                <div class="sparkline13-hd">
-                                                    <div class="main-sparkline13-hd">
-                                                        <button onClick="" data-toggle="modal" data-target="#modaltambah" style="float: right;position:relative;bottom:10px;" class="btn btn-primary">Atur Jadwal</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-                            </div>
+                           
                         </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6"></div>
+                    <div class="col-6" style="margin-right: 16px;">
+                        <button onClick="" data-toggle="modal" data-target="#modaltambah" style="float: right;position:relative;bottom:10px;" class="btn btn-outline-primary"> <i class="fa fa-calendar" style="margin-right: 4px;"></i> Atur Jadwal</button>
                     </div>
                 </div>
 
                 <div class="analytics-sparkle-area">
-                    <div class="container-fluid">
+                    <div class="container-fuid">
                         <div class="row">
                             <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                                 <div class="analytics-sparkle-line reso-mg-b-30">
@@ -126,7 +116,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form action="<?= base_url()?>jadwal/aturjadwal" id="form" method="post">
+                                <form action="<?= base_url() ?>jadwal/aturjadwal" id="form" method="post">
                                     <div class="form-group">
                                         <label for="">Jadwal Mulai</label>
                                         <input type="date" placeholder="Masukkan Jadwal Mulai" id="jadwal_mulai" name="jadwal_mulai" class="form-control">
@@ -144,3 +134,7 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
