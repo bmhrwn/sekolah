@@ -21,6 +21,7 @@ Class Home extends CI_Controller{
         $this->load->view('home/layout/footer');
     }
     public function pendaftaran(){
+        $id_kelas = $this->uri->segment(3);
         if($this->session->userdata('username') == null) {
             $this->session->set_flashdata("pesan", "Silahkan Login Terlebih Dahulu");
             $this->session->set_flashdata("title", "Gagal!!");
@@ -32,8 +33,10 @@ Class Home extends CI_Controller{
             "active_pendaftaran" => "active",
             "title" => "Pendaftaran",
             "data_kelas" => $this->ModelKuota->getDataKelas(),
-            "jadwal_pendaftaran" => $this->ModelJadwal->getBatasJadwal()
+            "jadwal_pendaftaran" => $this->ModelJadwal->getBatasJadwal(),
+            "dipilih" => $this->ModelKuota->getDataKelasById($id_kelas)
         );
+       
         $this->load->view('home/layout/header',$data);
         $this->load->view('home/layout/navbar');
         $this->load->view('home/data/pendaftaran');
