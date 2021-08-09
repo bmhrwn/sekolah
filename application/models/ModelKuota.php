@@ -26,4 +26,7 @@ class ModelKuota extends CI_Model
     {
         return $this->db->delete('tbl_kuota', array('id_kuota' => $id_kuota));
     }
+    public function getDataKelasById($id_kelas){
+        return $this->db->get_where('tbl_kelas', array('id_kelas' => $id_kelas))->row_array();
+    }
 }
