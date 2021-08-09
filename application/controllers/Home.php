@@ -13,7 +13,8 @@ Class Home extends CI_Controller{
         $data = array(
             "active_home" => "active",
             "title" => "SMPN 148 Jakarta",
-            "jadwal_pendaftaran" => $this->ModelJadwal->getBatasJadwal()
+            "jadwal_pendaftaran" => $this->ModelJadwal->getBatasJadwal(),
+            "tanggal_laptop" => date("Y-m-d")
         );
         $this->load->view('home/layout/header',$data);
         $this->load->view('home/layout/navbar');
@@ -22,10 +23,19 @@ Class Home extends CI_Controller{
     }
     public function pendaftaran(){
         $id_kelas = $this->uri->segment(3);
+        $jadwal_pendaftaran = $this->ModelJadwal->getBatasJadwal();
+        $jadwal_selesai = $jadwal_pendaftaran['jadwal_selesai'];
+        $tanggal_laptop = date("Y-m-d");
         if($this->session->userdata('username') == null) {
             $this->session->set_flashdata("pesan", "Silahkan Login Terlebih Dahulu");
             $this->session->set_flashdata("title", "Gagal!!");
             $this->session->set_flashdata("type", "warning");
+            redirect(base_url());
+        }
+        if($jadwal_selesai <= $tanggal_laptop) {
+            $this->session->set_flashdata("pesan", "Pendaftaran Mutasi Telah Ditutup !!");
+            $this->session->set_flashdata("title", "Informasi!!");
+            $this->session->set_flashdata("type", "info");
             redirect(base_url());
         }
         $data = array(
@@ -109,7 +119,8 @@ Class Home extends CI_Controller{
 
             "active_kuota" => "active",
             "title" => "Tentang Sekolah",
-            "data_kuota"    => $this->ModelKuota->getDataKuota()
+            "data_kuota"    => $this->ModelKuota->getDataKuota(),
+           
         );
         $this->load->view('home/layout/header',$data);
         $this->load->view('home/layout/navbar');
