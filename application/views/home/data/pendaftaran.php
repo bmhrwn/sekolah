@@ -31,7 +31,7 @@
                         <div class="form-group row">
                             <label for="" class="col-sm-3 col-form-label">Nama Lengkap</label>
                             <div class="col-sm-9">
-                                <input type="text" value="" id="" required name="full_name" class="form-control">
+                                <input type="text"   value="" id="" required name="full_name" class="form-control">
                             </div>
                         </div>
                         <div class="form-group row">
@@ -59,7 +59,11 @@
                     <div class="form-group row">
                         <label for="" class="col-sm-3 col-form-label">Jenis Kelamin</label>
                         <div class="col-sm-9">
-                            <input type="text" value="" id="" required name="jenis_kelamin" class="form-control">
+                            <select type="text" required name="jenis_kelamin" class="form-control">
+                                <option value="">--Pilih Jenis Kelamin--</option>
+                                <option value="Laki - Laki">Laki - Laki</option>
+                                <option value="Wanita">Wanita</option>
+                            </select>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -93,9 +97,13 @@
                         <label for="" class="col-sm-3 col-form-label">Kelas Tujuan</label>
                         <div class="col-sm-9">
                             <select type="text" required name="nama_kelas" class="form-control">
+                              <?php  if($dipilih != null) { ?>
+                                <option value="<?= $dipilih['id_kelas'] ?>"><?= $dipilih['nama_kelas'] ?></option>
+                                <?php }else{ ?>
                                 <option value="1">--Pilih Kelas--</option>
                                 <?php foreach ($data_kelas as $kelas) { ?>
                                     <option value="<?= $kelas['id_kelas'] ?>"><?= $kelas['nama_kelas'] ?></option>
+                                <?php } ?>
                                 <?php } ?>
                             </select>
                         </div>

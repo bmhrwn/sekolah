@@ -45,7 +45,7 @@
                 <small>/Month</small>
               </div> -->
               <div class="price-footer">
-                <a href="<?= base_url() ?>home/pendaftaran" class="bttn-white">Daftar Sekarang</a>
+                <a href="<?= base_url() ?>home/pendaftaran/<?= $row['id_kelas']?>" class="bttn-white">Daftar Sekarang</a>
               </div>
             </div>
             <div class="space-30 hidden visible-xs"></div>

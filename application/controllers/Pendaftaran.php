@@ -43,9 +43,11 @@ class Pendaftaran extends CI_Controller
         $batas_pendaftaran = $get_DataKelas['batas_pendaftar'];
         $get_DataByKelas = $this->ModelPendaftaran->getDataPendaftaranByIdKelas($nama_kelas);
         $jumlah_pendaftar = count($get_DataByKelas);
+
         if($jumlah_pendaftar < $batas_pendaftaran){
         if($nis != $nis_sama){
         
+      
         
         $data_siswa = array(
             'id_user'   => $id_user,
