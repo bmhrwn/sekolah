@@ -53,7 +53,7 @@
             $idPendaftaran = $this->uri->segment(3);
             $kelulusan = $this->uri->segment(4);
             $updateStatusNormalisasi = [
-                'status' => 1
+                'status' => $kelulusan
             ];
             $this->ModelHasil->updateNormalisasi($updateStatusNormalisasi,$idPendaftaran);
             if($kelulusan == 1){

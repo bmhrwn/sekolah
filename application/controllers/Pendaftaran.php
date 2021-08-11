@@ -21,6 +21,7 @@ class Pendaftaran extends CI_Controller
         $kota = $this->input->post('kota');
         $alamat = $this->input->post('alamat');
         $nama_kelas = $this->input->post('nama_kelas');
+        $semester   = $this->input->post('semester');
 
 
         $nilai_mtk = $this->input->post('nilai_mtk');
@@ -56,12 +57,14 @@ class Pendaftaran extends CI_Controller
             'no_telp' => $no_telp,
             'jenis_kelamin' => $jenis_kelamin,
             'kota'      => $kota,
-            'foto_siswa'    => $fotoSiswa
+            'foto_siswa'    => $fotoSiswa,
+            'semester'      => $semester
         );
         $this->ModelPendaftaran->inputDataSiswa($data_siswa);
         $data_pendaftaran = array(
             'nis'   => $nis,
             'ijazah' => $ijazah,
+            'semester' => $semester,
             'akte'  => $akte,
             'kartu_keluarga' => $kartu_keluarga,
             'bukti_nis' => $bukti_nis,

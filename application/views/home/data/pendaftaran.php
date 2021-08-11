@@ -15,15 +15,15 @@
     <div class="container">
         <div class="data-1" id="data_1">
             <div class="row">
-                <center>
+                <center
                     <h4>Silahkan isi halaman form pendaftaran sesuai ketentuan yang ada.</h4>
                 </center>
                 <div class="col-md-6">
-                    <form action="<?= base_url() ?>pendaftaran/process_pendaftaran" method="post" enctype="multipart/form-data">
+                    <form action="<?= base_url() ?>pendaftaran/process_pendaftaran" novalidate method="post" enctype="multipart/form-data">
                         <div class="form-group row mt-4">
                             <label for="" class="col-sm-3 col-form-label">NISN</label>
                             <div class="col-sm-9">
-                                <input type="number" autocomplete="off" autocorrect="false" value="" id="" required name="nis" onkeyup="checkNis(this)" class="form-control">
+                                <input type="text" autocomplete="off" autocorrect="false" value="" id="nis" required name="nis" onkeyup="checkNis(this)" onkeypress='validate(event)' class="form-control">
                                 <p style="color: red;
                                 " hidden="true" id="notif">Silahkan masukan nis yang benar ! (10 digit)</p>
                             </div>
@@ -38,7 +38,8 @@
                             <label for="" class="col-sm-3 col-form-label">Tanggal Lahir</label>
                             <div class="col-sm-9">
                                 <input type="date" value="" onchange="checkDate(this)" id="tgl_lahir" required name="tgl_lahir" class="form-control">
-                                <p id="notif_tanggal" hidden="true" style="color: red;">Mohon Maaf umur anda belum mencukup untuk melakukan pendaftaran mutasi</p>
+                                <p id="notif_tanggal" hidden="true" style="color: red;">Mohon Maaf umur anda belum mencukupi untuk melakukan pendaftaran mutasi</p>
+                                <p id="notif_tanggal_max" hidden="true" style="color: red;">Mohon Maaf umur anda melewati bawat maksimal pendaftaran mutasi.</p>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -170,6 +171,19 @@
                             <input class="form-control" required type="file" name="ijazah" id="formFile">
                         </div>
                     </div>
+                    <div class="form-group row">
+                        <label for="" class="col-sm-3 col-form-label">Semester</label>
+                        <div class="col-sm-9">
+                            <select type="text" required name="semester" class="form-control">
+                                <option value="2">--Semester--</option>
+                                
+                                    <option value="">Ganjil</option>
+                                    <option value="">Genap</option>
+                               
+                            </select>
+                        </div>
+                    </div>
+
 
 
                 </div>
@@ -188,7 +202,7 @@
                         <?php if (count($rangeSelesai) <= 1) { ?>
                             <button class="btn btn-primary" id="btn_daftar" onclick="notifSudahSelesai()" type="button">Daftar</button>
                             <?php } else { ?>
-                            <button class="btn btn-primary" id="btn_daftar" type="submit">Daftar</button>
+                            <button class="btn btn-primary" id="btn_dafta" type="submit">Daftar</button>
                         <?php } ?>
                     <?php } else { ?>
 
@@ -216,6 +230,24 @@
         }
     }
 
+    function validate(evt) {
+        var theEvent = evt || window.event;
+
+        // Handle paste
+        if (theEvent.type === 'paste') {
+            key = event.clipboardData.getData('text/plain');
+        } else {
+        // Handle key press
+            var key = theEvent.keyCode || theEvent.which;
+            key = String.fromCharCode(key);
+        }
+        var regex = /[0-9]|\./;
+        if( !regex.test(key) ) {
+            theEvent.returnValue = false;
+            if(theEvent.preventDefault) theEvent.preventDefault();
+        }
+    }
+
     function checkNis(field) {
         let nis = field.value;
         console.log(nis.length);
@@ -226,6 +258,12 @@
             document.getElementById("notif").hidden = true;
             $("#btn_daftar").removeAttr('disabled');
         }
+    }
+    setMax()
+    
+    function setMax(){
+        document.getElementsByName("nis")[0].setAttribute("maxLength", "10");
+
     }
 
     function notifBelumMulai() {
@@ -253,12 +291,21 @@
         let fullDate = yy + '-' + mm + '-' + dd;
         let arrayDate = getRange(date, fullDate);
         let minimalUmur = 4015; // 11 tahun
+        let maximalUmur = 4745;
         if (arrayDate.length <= 4015) {
             document.getElementById("notif_tanggal").hidden = false
             $("#btn_daftar").attr('disabled', 'disabled');
         } else {
             $("#btn_daftar").removeAttr('disabled');
             document.getElementById("notif_tanggal").hidden = true
+
+        }
+        if (arrayDate.length >= maximalUmur) {
+            document.getElementById("notif_tanggal_max").hidden = false
+            $("#btn_daftar").attr('disabled', 'disabled');
+        } else {
+            $("#btn_daftar").removeAttr('disabled');
+            document.getElementById("notif_tanggal_max").hidden = true
 
         }
 
