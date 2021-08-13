@@ -32,4 +32,14 @@ public function getDataChart($status){
     $sql = "SELECT * FROM tbl_normalisasi WHERE status = ?";
     return $this->db->query($sql,$status)->result_array($status);
 }
+
+public function getDataChartBySemester($status,$semester,$tahun){
+    $sql = "SELECT * FROM tbl_normalisasi
+                JOIN tbl_pendaftaran ON tbl_normalisasi.id_pendaftaran = tbl_pendaftaran.id_pendaftaran 
+                WHERE semester = ? AND
+                      YEAR(tahun) = ? AND
+                      status = ?";
+    return $this->db->query($sql,[$semester,$tahun,$status])->result_array();
+}
+
 }
