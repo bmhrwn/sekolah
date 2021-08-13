@@ -25,6 +25,7 @@ Class Home extends CI_Controller{
         $id_kelas = $this->uri->segment(3);
         $jadwal_pendaftaran = $this->ModelJadwal->getBatasJadwal();
         $jadwal_selesai = $jadwal_pendaftaran['jadwal_selesai'];
+        $jadwal_mulai = $jadwal_pendaftaran['jadwal_mulai'];
         $tanggal_laptop = date("Y-m-d");
         if($this->session->userdata('username') == null) {
             $this->session->set_flashdata("pesan", "Silahkan Login Terlebih Dahulu");
@@ -36,7 +37,13 @@ Class Home extends CI_Controller{
             $this->session->set_flashdata("pesan", "Pendaftaran Mutasi Telah Ditutup !!");
             $this->session->set_flashdata("title", "Informasi!!");
             $this->session->set_flashdata("type", "info");
-            redirect(base_url());
+            redirect(base_url('home/kuota_mutasi'));
+        }
+        if($tanggal_laptop <= $jadwal_mulai){
+            $this->session->set_flashdata("pesan", "Mohon maaf, Pendaftaran Siswa mutasi belum dimulai !");
+            $this->session->set_flashdata("title", "Informasi!!");
+            $this->session->set_flashdata("type", "info");
+            redirect(base_url('home/kuota_mutasi'));
         }
         $data = array(
 

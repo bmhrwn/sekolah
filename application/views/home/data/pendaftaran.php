@@ -39,7 +39,7 @@
                             <div class="col-sm-9">
                                 <input type="date" value="" onchange="checkDate(this)" id="tgl_lahir" required name="tgl_lahir" class="form-control">
                                 <p id="notif_tanggal" hidden="true" style="color: red;">Mohon Maaf umur anda belum mencukupi untuk melakukan pendaftaran mutasi</p>
-                                <p id="notif_tanggal_max" hidden="true" style="color: red;">Mohon Maaf umur anda melewati bawat maksimal pendaftaran mutasi.</p>
+                                <p id="notif_tanggal_max" hidden="true" style="color: red;">Mohon Maaf umur anda melewati batas maksimal pendaftaran mutasi.</p>
                             </div>
                         </div>
                         <div class="form-group row">
