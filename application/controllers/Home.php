@@ -33,13 +33,13 @@ Class Home extends CI_Controller{
             $this->session->set_flashdata("type", "warning");
             redirect(base_url());
         }
-        if($jadwal_selesai <= $tanggal_laptop) {
+        if($jadwal_selesai < $tanggal_laptop) {
             $this->session->set_flashdata("pesan", "Pendaftaran Mutasi Telah Ditutup !!");
             $this->session->set_flashdata("title", "Informasi!!");
             $this->session->set_flashdata("type", "info");
             redirect(base_url('home/kuota_mutasi'));
         }
-        if($tanggal_laptop <= $jadwal_mulai){
+        if($tanggal_laptop < $jadwal_mulai){
             $this->session->set_flashdata("pesan", "Mohon maaf, Pendaftaran Siswa mutasi belum dimulai !");
             $this->session->set_flashdata("title", "Informasi!!");
             $this->session->set_flashdata("type", "info");
