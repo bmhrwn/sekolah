@@ -1,4 +1,4 @@
-<div class="footer-copyright-area fixed-footer">
+<div class="footer-copyright-area fixed-footer" style="margin-top: 50px;">
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-12">
@@ -114,6 +114,14 @@
 <script src="<?= base_url() ?>assets/admin/kelas.js"></script>
 <script src="<?= base_url() ?>assets/admin/siswa.js"></script>
 <script src="<?= base_url() ?>assets/alert.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+<script>
+    $("#datepicker").datepicker({
+        format: "yyyy",
+        viewMode: "years",
+        minViewMode: "years"
+    });
+</script>
 <script>
   pesan = document.getElementById('pesan');
   if (pesan != null) {

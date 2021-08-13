@@ -185,8 +185,8 @@
                             <select type="text" required name="semester" class="form-control">
                                 <option value="2">--Semester--</option>
                                 
-                                    <option value="">Ganjil</option>
-                                    <option value="">Genap</option>
+                                    <option value="Ganjil">Ganjil</option>
+                                    <option value="Genap">Genap</option>
                                
                             </select>
                         </div>

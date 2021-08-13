@@ -74,6 +74,7 @@
     <link rel="stylesheet" href="<?= base_url()?>assets/admin/css/data-table/bootstrap-table.css">
     <link rel="stylesheet" href="<?= base_url()?>assets/admin/css/data-table/bootstrap-editable.css">
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet"/>
     <style>
     .btn-outline-danger{
         border-color : red!important;

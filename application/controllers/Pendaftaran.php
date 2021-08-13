@@ -60,7 +60,7 @@ class Pendaftaran extends CI_Controller
             'jenis_kelamin' => $jenis_kelamin,
             'kota'      => $kota,
             'foto_siswa'    => $fotoSiswa,
-            'semester'      => $semester
+           
         );
         $this->ModelPendaftaran->inputDataSiswa($data_siswa);
         $data_pendaftaran = array(
@@ -74,7 +74,9 @@ class Pendaftaran extends CI_Controller
             'nilai_bindo'   => $nilai_bindo,
             'nilai_bingg'   => $nilai_bingg,
             'id_kelas' => $nama_kelas,
-            'pemberitahuan' => "Selamat, data Anda sudah masuk kedalam sistem kami, Silahkan tunggu konfirmasi dari kami."
+            'pemberitahuan' => "Selamat, data Anda sudah masuk kedalam sistem kami, Silahkan tunggu konfirmasi dari kami.",
+            'semester'      => $semester,
+            'tahun' => date('Y-m-d')
         );
         $this->ModelPendaftaran->insertDataPendaftaran($data_pendaftaran);
         $this->session->set_flashdata('type', 'success');

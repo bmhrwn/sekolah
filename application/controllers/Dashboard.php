@@ -312,17 +312,30 @@ class Dashboard extends CI_Controller
         $this->load->view('dashboard/layout/footer');
     }
     public function data_laporan()
-    {
+    {       
+        if(isset($_POST['semester'])){
+            $semester = $this->input->post('semester');
+            $tahun = $this->input->post('tahun');
+            $getDataLulus = $this->ModelLaporan->getDataChartBySemester(1,$semester,$tahun);
+            $getDataTidakLulus = $this->ModelLaporan->getDataChartBySemester(0,$semester,$tahun);
+            $title = "Grafik Data Jumlah Kelulusan Semester ".$semester." Tahun " . $tahun;
+        }else{
+          
+            $getDataLulus = $this->ModelLaporan->getDataChart(1);
+            $getDataTidakLulus = $this->ModelLaporan->getDataChart(0);
+            $title = "Grafik Data Jumlah Kelulusan";
+            
+        }
         $label = [
             'Lulus',
             'Tidak Lulus'
         ];
-        $getDataLulus = $this->ModelLaporan->getDataChart(1);
-        $getDataTidakLulus = $this->ModelLaporan->getDataChart(2);
         $sample = [
             count($getDataLulus),
             count($getDataTidakLulus)
         ];
+
+        
         $data = array(
             'title' => 'Data Laporan',
             'active_laporan' => 'active',
@@ -330,7 +343,8 @@ class Dashboard extends CI_Controller
             'data_kelas2' => $this->ModelLaporan->getDataLolosKelas2(),
             'data_kelas3' => $this->ModelLaporan->getDataLolosKelas3(),
             'data_label' => $label,
-            'sample' => $sample
+            'sample' => $sample,
+            'title_grafik' => $title
         );
      
         $this->load->view('dashboard/layout/header', $data);
