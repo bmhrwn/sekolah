@@ -15,8 +15,7 @@
     <div class="container">
         <div class="data-1" id="data_1">
             <div class="row">
-                <center
-                    <h4>Silahkan isi halaman form pendaftaran sesuai ketentuan yang ada.</h4>
+                <center <h4>Silahkan isi halaman form pendaftaran sesuai ketentuan yang ada.</h4>
                 </center>
                 <div class="col-md-6">
                     <form action="<?= base_url() ?>pendaftaran/process_pendaftaran" novalidate method="post" enctype="multipart/form-data">
@@ -31,7 +30,7 @@
                         <div class="form-group row">
                             <label for="" class="col-sm-3 col-form-label">Nama Lengkap</label>
                             <div class="col-sm-9">
-                                <input type="text"   value="" id="" required name="full_name" class="form-control">
+                                <input type="text" value="" id="" required name="full_name" class="form-control">
                             </div>
                         </div>
                         <div class="form-group row">
@@ -96,14 +95,14 @@
                     <div class="form-group row">
                         <label for="" class="col-sm-3 col-form-label">Kelas Tujuan</label>
                         <div class="col-sm-9">
-                            <select type="text" required name="nama_kelas" class="form-control">
-                              <?php  if($dipilih != null) { ?>
-                                <option value="<?= $dipilih['id_kelas'] ?>"><?= $dipilih['nama_kelas'] ?></option>
-                                <?php }else{ ?>
-                                <option value="1">--Pilih Kelas--</option>
-                                <?php foreach ($data_kelas as $kelas) { ?>
-                                    <option value="<?= $kelas['id_kelas'] ?>"><?= $kelas['nama_kelas'] ?></option>
-                                <?php } ?>
+                            <select type="text" readonly required name="nama_kelas" class="form-control">
+                                <?php if ($dipilih != null) { ?>
+                                    <option value="<?= $dipilih['id_kelas'] ?>"><?= $dipilih['nama_kelas'] ?></option>
+                                <?php } else { ?>
+                                    <option value="1">--Pilih Kelas--</option>
+                                    <?php foreach ($data_kelas as $kelas) { ?>
+                                        <option value="<?= $kelas['id_kelas'] ?>"><?= $kelas['nama_kelas'] ?></option>
+                                    <?php } ?> 
                                 <?php } ?>
                             </select>
                         </div>
@@ -184,10 +183,10 @@
                         <div class="col-sm-9">
                             <select type="text" required name="semester" class="form-control">
                                 <option value="2">--Semester--</option>
-                                
-                                    <option value="Ganjil">Ganjil</option>
-                                    <option value="Genap">Genap</option>
-                               
+
+                                <option value="Ganjil">Ganjil</option>
+                                <option value="Genap">Genap</option>
+
                             </select>
                         </div>
                     </div>
@@ -209,7 +208,7 @@
                     <?php if (count($rangeMulai) <= 1) { ?>
                         <?php if (count($rangeSelesai) <= 1) { ?>
                             <button class="btn btn-primary" id="btn_daftar" onclick="notifSudahSelesai()" type="button">Daftar</button>
-                            <?php } else { ?>
+                        <?php } else { ?>
                             <button class="btn btn-primary" id="btn_dafta" type="submit">Daftar</button>
                         <?php } ?>
                     <?php } else { ?>
@@ -245,14 +244,14 @@
         if (theEvent.type === 'paste') {
             key = event.clipboardData.getData('text/plain');
         } else {
-        // Handle key press
+            // Handle key press
             var key = theEvent.keyCode || theEvent.which;
             key = String.fromCharCode(key);
         }
         var regex = /[0-9]|\./;
-        if( !regex.test(key) ) {
+        if (!regex.test(key)) {
             theEvent.returnValue = false;
-            if(theEvent.preventDefault) theEvent.preventDefault();
+            if (theEvent.preventDefault) theEvent.preventDefault();
         }
     }
 
@@ -268,8 +267,8 @@
         }
     }
     setMax()
-    
-    function setMax(){
+
+    function setMax() {
         document.getElementsByName("nis")[0].setAttribute("maxLength", "10");
 
     }
@@ -282,7 +281,7 @@
         })
     }
 
-    function notifSudahSelesai(){
+    function notifSudahSelesai() {
         swal({
             title: "Mohon Maaf",
             text: "Anda tidak bisa melakukan pendaftaran siswa mutasi karna pendaftaran sudah selesai !",
