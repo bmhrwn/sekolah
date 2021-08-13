@@ -102,7 +102,7 @@
                                     <option value="1">--Pilih Kelas--</option>
                                     <?php foreach ($data_kelas as $kelas) { ?>
                                         <option value="<?= $kelas['id_kelas'] ?>"><?= $kelas['nama_kelas'] ?></option>
-                                    <?php } ?>
+                                    <?php } ?> 
                                 <?php } ?>
                             </select>
                         </div>
